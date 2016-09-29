@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelConversionPings model type for use with the Youtube API
-public class YoutubeChannelConversionPings: ObjectType {
+open class YoutubeChannelConversionPings: ObjectType {
 	/// Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping.
-	public var pings: [YoutubeChannelConversionPing]!
+	open var pings: [YoutubeChannelConversionPing]!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeChannelConversionPings: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		pings <- map["pings"]
 	}
 }

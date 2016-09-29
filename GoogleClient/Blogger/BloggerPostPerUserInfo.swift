@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The PostPerUserInfo model type for use with the Blogger API
-public class BloggerPostPerUserInfo: GoogleObject {
+open class BloggerPostPerUserInfo: GoogleObject {
 	/// ID of the User.
-	public var userId: String!
+	open var userId: String!
 	/// True if the user has Author level access to the post.
-	public var hasEditAccess: Bool!
+	open var hasEditAccess: Bool!
 	/// ID of the Blog that the post resource belongs to.
-	public var blogId: String!
+	open var blogId: String!
 	/// ID of the Post resource.
-	public var postId: String!
+	open var postId: String!
 	/// The kind of this entity. Always blogger#postPerUserInfo
-	public var kind: String = "blogger#postPerUserInfo"
+	open var kind: String = "blogger#postPerUserInfo"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class BloggerPostPerUserInfo: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		userId <- map["userId"]
 		hasEditAccess <- map["hasEditAccess"]
 		blogId <- map["blogId"]

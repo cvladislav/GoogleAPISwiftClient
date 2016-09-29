@@ -24,25 +24,25 @@ public enum YoutubeVideoFileDetailsVideoStreamRotation: String {
 }
 
 /// The VideoFileDetailsVideoStream model type for use with the Youtube API
-public class YoutubeVideoFileDetailsVideoStream: ObjectType {
+open class YoutubeVideoFileDetailsVideoStream: ObjectType {
 	/// The video stream's frame rate, in frames per second.
-	public var frameRateFps: Double!
+	open var frameRateFps: Double!
 	/// A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code.
-	public var vendor: String!
+	open var vendor: String!
 	/// The video codec that the stream uses.
-	public var codec: String!
+	open var codec: String!
 	/// The video content's display aspect ratio, which specifies the aspect ratio in which the video should be displayed.
-	public var aspectRatio: Double!
+	open var aspectRatio: Double!
 	/// The amount that YouTube needs to rotate the original source content to properly display the video.
-	public var rotation: YoutubeVideoFileDetailsVideoStreamRotation!
+	open var rotation: YoutubeVideoFileDetailsVideoStreamRotation!
 	/// The encoded video content's height in pixels.
-	public var heightPixels: UInt!
+	open var heightPixels: UInt!
 	/// The video stream's bitrate, in bits per second.
-	public var bitrateBps: UInt64!
+	open var bitrateBps: UInt64!
 	/// The encoded video content's width in pixels. You can calculate the video's encoding aspect ratio as width_pixels / height_pixels.
-	public var widthPixels: UInt!
+	open var widthPixels: UInt!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -50,7 +50,7 @@ public class YoutubeVideoFileDetailsVideoStream: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		frameRateFps <- map["frameRateFps"]
 		vendor <- map["vendor"]
 		codec <- map["codec"]

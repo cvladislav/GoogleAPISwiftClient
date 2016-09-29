@@ -18,15 +18,15 @@ public enum YoutubeSubscriptionContentDetailsActivityType: String {
 }
 
 /// The SubscriptionContentDetails model type for use with the Youtube API
-public class YoutubeSubscriptionContentDetails: ObjectType {
+open class YoutubeSubscriptionContentDetails: ObjectType {
 	/// The approximate number of items that the subscription points to.
-	public var totalItemCount: UInt!
+	open var totalItemCount: UInt!
 	/// The type of activity this subscription is for (only uploads, everything).
-	public var activityType: YoutubeSubscriptionContentDetailsActivityType!
+	open var activityType: YoutubeSubscriptionContentDetailsActivityType!
 	/// The number of new items in the subscription since its content was last read.
-	public var newItemCount: UInt!
+	open var newItemCount: UInt!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -34,7 +34,7 @@ public class YoutubeSubscriptionContentDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		totalItemCount <- map["totalItemCount"]
 		activityType <- map["activityType"]
 		newItemCount <- map["newItemCount"]

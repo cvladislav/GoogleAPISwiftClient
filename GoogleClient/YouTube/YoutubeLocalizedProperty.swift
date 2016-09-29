@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The LocalizedProperty model type for use with the Youtube API
-public class YoutubeLocalizedProperty: ObjectType {
-	public var localized: [YoutubeLocalizedString]!
-	public var defaultValue: String!
+open class YoutubeLocalizedProperty: ObjectType {
+	open var localized: [YoutubeLocalizedString]!
+	open var defaultValue: String!
 	/// The language of the default property.
-	public var defaultLanguage: YoutubeLanguageTag!
+	open var defaultLanguage: YoutubeLanguageTag!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeLocalizedProperty: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		localized <- map["localized"]
 		defaultValue <- map["default"]
 		defaultLanguage <- map["defaultLanguage"]

@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The FanFundingEvent model type for use with the Youtube API
-public class YoutubeFanFundingEvent: GoogleObject {
+open class YoutubeFanFundingEvent: GoogleObject {
 	/// The snippet object contains basic details about the fan funding event.
-	public var snippet: YoutubeFanFundingEventSnippet!
+	open var snippet: YoutubeFanFundingEventSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube assigns to uniquely identify the fan funding event.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#fanFundingEvent".
-	public var kind: String = "youtube#fanFundingEvent"
+	open var kind: String = "youtube#fanFundingEvent"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeFanFundingEvent: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

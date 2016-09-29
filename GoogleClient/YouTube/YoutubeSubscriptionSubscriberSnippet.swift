@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The SubscriptionSubscriberSnippet model type for use with the Youtube API
-public class YoutubeSubscriptionSubscriberSnippet: ObjectType {
+open class YoutubeSubscriptionSubscriberSnippet: ObjectType {
 	/// The title of the subscriber.
-	public var title: String!
+	open var title: String!
 	/// The channel ID of the subscriber.
-	public var channelId: String!
+	open var channelId: String!
 	/// Thumbnails for this subscriber.
-	public var thumbnails: YoutubeThumbnailDetails!
+	open var thumbnails: YoutubeThumbnailDetails!
 	/// The description of the subscriber.
-	public var description: String!
+	open var description: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeSubscriptionSubscriberSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		title <- map["title"]
 		channelId <- map["channelId"]
 		thumbnails <- map["thumbnails"]

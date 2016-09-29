@@ -10,9 +10,9 @@ import Foundation
 import ObjectMapper
 
 /// The TokenPagination model type for use with the Youtube API
-public class YoutubeTokenPagination: ObjectType {
+open class YoutubeTokenPagination: ObjectType {
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -20,7 +20,7 @@ public class YoutubeTokenPagination: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		}
 }
 

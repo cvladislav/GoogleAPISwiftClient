@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The PromotedItem model type for use with the Youtube API
-public class YoutubePromotedItem: ObjectType {
+open class YoutubePromotedItem: ObjectType {
 	/// The temporal position within the video where the promoted item will be displayed. If present, it overrides the default timing.
-	public var timing: YoutubeInvideoTiming!
+	open var timing: YoutubeInvideoTiming!
 	/// If true, the content owner's name will be used when displaying the promotion. This field can only be set when the update is made on behalf of the content owner.
-	public var promotedByContentOwner: Bool!
+	open var promotedByContentOwner: Bool!
 	/// Identifies the promoted item.
-	public var id: YoutubePromotedItemId!
+	open var id: YoutubePromotedItemId!
 	/// A custom message to display for this promotion. This field is currently ignored unless the promoted item is a website.
-	public var customMessage: String!
+	open var customMessage: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubePromotedItem: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		timing <- map["timing"]
 		promotedByContentOwner <- map["promotedByContentOwner"]
 		id <- map["id"]

@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The CdnSettings model type for use with the Youtube API
-public class YoutubeCdnSettings: ObjectType {
+open class YoutubeCdnSettings: ObjectType {
 	/// The resolution of the inbound video data.
-	public var resolution: YoutubeCdnSettingsResolution!
+	open var resolution: YoutubeCdnSettingsResolution!
 	/// The method or protocol used to transmit the video stream.
-	public var ingestionType: YoutubeCdnSettingsIngestionType!
+	open var ingestionType: YoutubeCdnSettingsIngestionType!
 	/// The frame rate of the inbound video data.
-	public var frameRate: YoutubeCdnSettingsFrameRate!
+	open var frameRate: YoutubeCdnSettingsFrameRate!
 	/// The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube.
-	public var ingestionInfo: YoutubeIngestionInfo!
+	open var ingestionInfo: YoutubeIngestionInfo!
 	/// The format of the video stream that you are sending to Youtube.
-	public var format: String!
+	open var format: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeCdnSettings: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resolution <- map["resolution"]
 		ingestionType <- map["ingestionType"]
 		frameRate <- map["frameRate"]

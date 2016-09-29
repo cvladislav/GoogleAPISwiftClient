@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The VideoCategory model type for use with the Youtube API
-public class YoutubeVideoCategory: GoogleObject {
+open class YoutubeVideoCategory: GoogleObject {
 	/// The snippet object contains basic details about the video category, including its title.
-	public var snippet: YoutubeVideoCategorySnippet!
+	open var snippet: YoutubeVideoCategorySnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube uses to uniquely identify the video category.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#videoCategory".
-	public var kind: String = "youtube#videoCategory"
+	open var kind: String = "youtube#videoCategory"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeVideoCategory: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

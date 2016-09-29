@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The GeoPoint model type for use with the Youtube API
-public class YoutubeGeoPoint: ObjectType {
+open class YoutubeGeoPoint: ObjectType {
 	/// Latitude in degrees.
-	public var latitude: Double!
+	open var latitude: Double!
 	/// Longitude in degrees.
-	public var longitude: Double!
+	open var longitude: Double!
 	/// Altitude above the reference ellipsoid, in meters.
-	public var altitude: Double!
+	open var altitude: Double!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class YoutubeGeoPoint: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		latitude <- map["latitude"]
 		longitude <- map["longitude"]
 		altitude <- map["altitude"]

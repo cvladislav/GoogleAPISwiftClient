@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The InvideoPosition model type for use with the Youtube API
-public class YoutubeInvideoPosition: ObjectType {
+open class YoutubeInvideoPosition: ObjectType {
 	/// Describes in which corner of the video the visual widget will appear.
-	public var cornerPosition: YoutubeInvideoPositionCornerPosition!
+	open var cornerPosition: YoutubeInvideoPositionCornerPosition!
 	/// Defines the position type.
-	public var type: YoutubeInvideoPositionType!
+	open var type: YoutubeInvideoPositionType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeInvideoPosition: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		cornerPosition <- map["cornerPosition"]
 		type <- map["type"]
 	}

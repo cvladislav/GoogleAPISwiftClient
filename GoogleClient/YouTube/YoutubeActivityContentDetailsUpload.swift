@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The ActivityContentDetailsUpload model type for use with the Youtube API
-public class YoutubeActivityContentDetailsUpload: ObjectType {
+open class YoutubeActivityContentDetailsUpload: ObjectType {
 	/// The ID that YouTube uses to uniquely identify the uploaded video.
-	public var videoId: String!
+	open var videoId: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeActivityContentDetailsUpload: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		videoId <- map["videoId"]
 	}
 }

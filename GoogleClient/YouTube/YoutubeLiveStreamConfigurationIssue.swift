@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The LiveStreamConfigurationIssue model type for use with the Youtube API
-public class YoutubeLiveStreamConfigurationIssue: ObjectType {
+open class YoutubeLiveStreamConfigurationIssue: ObjectType {
 	/// The short-form reason for this issue.
-	public var reason: String!
+	open var reason: String!
 	/// The long-form description of the issue and how to resolve it.
-	public var description: String!
+	open var description: String!
 	/// How severe this issue is to the stream.
-	public var severity: YoutubeLiveStreamConfigurationIssueSeverity!
+	open var severity: YoutubeLiveStreamConfigurationIssueSeverity!
 	/// The kind of error happening.
-	public var type: YoutubeLiveStreamConfigurationIssueType!
+	open var type: YoutubeLiveStreamConfigurationIssueType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeLiveStreamConfigurationIssue: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		reason <- map["reason"]
 		description <- map["description"]
 		severity <- map["severity"]

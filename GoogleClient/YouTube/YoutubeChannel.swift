@@ -10,37 +10,37 @@ import Foundation
 import ObjectMapper
 
 /// The Channel model type for use with the Youtube API
-public class YoutubeChannel: GoogleObject {
+open class YoutubeChannel: GoogleObject {
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#channel".
-	public var kind: String = "youtube#channel"
+	open var kind: String = "youtube#channel"
 	/// The contentDetails object encapsulates information about the channel's content.
-	public var contentDetails: YoutubeChannelContentDetails!
+	open var contentDetails: YoutubeChannelContentDetails!
 	/// The snippet object contains basic details about the channel, such as its title, description, and thumbnail images.
-	public var snippet: YoutubeChannelSnippet!
+	open var snippet: YoutubeChannelSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The auditionDetails object encapsulates channel data that is relevant for YouTube Partners during the audition process.
-	public var auditDetails: YoutubeChannelAuditDetails!
+	open var auditDetails: YoutubeChannelAuditDetails!
 	/// The conversionPings object encapsulates information about conversion pings that need to be respected by the channel.
-	public var conversionPings: YoutubeChannelConversionPings!
+	open var conversionPings: YoutubeChannelConversionPings!
 	/// The statistics object encapsulates statistics for the channel.
-	public var statistics: YoutubeChannelStatistics!
+	open var statistics: YoutubeChannelStatistics!
 	/// The ID that YouTube uses to uniquely identify the channel.
-	public var id: String!
+	open var id: String!
 	/// The topicDetails object encapsulates information about Freebase topics associated with the channel.
-	public var topicDetails: YoutubeChannelTopicDetails!
+	open var topicDetails: YoutubeChannelTopicDetails!
 	/// The invideoPromotion object encapsulates information about promotion campaign associated with the channel.
-	public var invideoPromotion: YoutubeInvideoPromotion!
+	open var invideoPromotion: YoutubeInvideoPromotion!
 	/// Localizations for different languages
-	public var localizations: [String: YoutubeChannelLocalization]!
+	open var localizations: [String: YoutubeChannelLocalization]!
 	/// The contentOwnerDetails object encapsulates channel data that is relevant for YouTube Partners linked with the channel.
-	public var contentOwnerDetails: YoutubeChannelContentOwnerDetails!
+	open var contentOwnerDetails: YoutubeChannelContentOwnerDetails!
 	/// The status object encapsulates information about the privacy status of the channel.
-	public var status: YoutubeChannelStatus!
+	open var status: YoutubeChannelStatus!
 	/// The brandingSettings object encapsulates information about the branding of the channel.
-	public var brandingSettings: YoutubeChannelBrandingSettings!
+	open var brandingSettings: YoutubeChannelBrandingSettings!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -48,7 +48,7 @@ public class YoutubeChannel: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		kind <- map["kind"]
 		contentDetails <- map["contentDetails"]
 		snippet <- map["snippet"]

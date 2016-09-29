@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The AccessPolicy model type for use with the Youtube API
-public class YoutubeAccessPolicy: ObjectType {
+open class YoutubeAccessPolicy: ObjectType {
 	/// A list of region codes that identify countries where the default policy do not apply.
-	public var exception: [String]!
+	open var exception: [String]!
 	/// The value of allowed indicates whether the access to the policy is allowed or denied by default.
-	public var allowed: Bool!
+	open var allowed: Bool!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeAccessPolicy: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		exception <- map["exception"]
 		allowed <- map["allowed"]
 	}

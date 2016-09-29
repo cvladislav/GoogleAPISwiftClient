@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The VideoAbuseReportReasonSnippet model type for use with the Youtube API
-public class YoutubeVideoAbuseReportReasonSnippet: ObjectType {
+open class YoutubeVideoAbuseReportReasonSnippet: ObjectType {
 	/// The localized label belonging to this abuse report reason.
-	public var label: String!
+	open var label: String!
 	/// The secondary reasons associated with this reason, if any are available. (There might be 0 or more.)
-	public var secondaryReasons: [YoutubeVideoAbuseReportSecondaryReason]!
+	open var secondaryReasons: [YoutubeVideoAbuseReportSecondaryReason]!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeVideoAbuseReportReasonSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		label <- map["label"]
 		secondaryReasons <- map["secondaryReasons"]
 	}

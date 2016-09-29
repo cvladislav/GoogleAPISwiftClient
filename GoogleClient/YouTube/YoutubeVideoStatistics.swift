@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The VideoStatistics model type for use with the Youtube API
-public class YoutubeVideoStatistics: ObjectType {
+open class YoutubeVideoStatistics: ObjectType {
 	/// The number of users who have indicated that they liked the video by giving it a positive rating.
-	public var likeCount: UInt64!
+	open var likeCount: UInt64!
 	/// The number of times the video has been viewed.
-	public var viewCount: UInt64!
+	open var viewCount: UInt64!
 	/// The number of users who currently have the video marked as a favorite video.
-	public var favoriteCount: UInt64!
+	open var favoriteCount: UInt64!
 	/// The number of comments for the video.
-	public var commentCount: UInt64!
+	open var commentCount: UInt64!
 	/// The number of users who have indicated that they disliked the video by giving it a negative rating.
-	public var dislikeCount: UInt64!
+	open var dislikeCount: UInt64!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeVideoStatistics: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		likeCount <- map["likeCount"]
 		viewCount <- map["viewCount"]
 		favoriteCount <- map["favoriteCount"]

@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The PlaylistPlayer model type for use with the Youtube API
-public class YoutubePlaylistPlayer: ObjectType {
+open class YoutubePlaylistPlayer: ObjectType {
 	/// An <iframe> tag that embeds a player that will play the playlist.
-	public var embedHtml: String!
+	open var embedHtml: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubePlaylistPlayer: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		embedHtml <- map["embedHtml"]
 	}
 }

@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The VideoRecordingDetails model type for use with the Youtube API
-public class YoutubeVideoRecordingDetails: ObjectType {
+open class YoutubeVideoRecordingDetails: ObjectType {
 	/// The geolocation information associated with the video.
-	public var location: YoutubeGeoPoint!
+	open var location: YoutubeGeoPoint!
 	/// The date and time when the video was recorded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
-	public var recordingDate: Date!
+	open var recordingDate: Date!
 	/// The text description of the location where the video was recorded.
-	public var locationDescription: String!
+	open var locationDescription: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class YoutubeVideoRecordingDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		location <- map["location"]
 		recordingDate <- (map["recordingDate"], RFC3339Transform())
 		locationDescription <- map["locationDescription"]

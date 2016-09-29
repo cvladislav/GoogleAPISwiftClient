@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The LiveBroadcastTopicSnippet model type for use with the Youtube API
-public class YoutubeLiveBroadcastTopicSnippet: ObjectType {
+open class YoutubeLiveBroadcastTopicSnippet: ObjectType {
 	/// The date at which the topic was released. Filled for types: videoGame
-	public var releaseDate: String!
+	open var releaseDate: String!
 	/// The name of the topic.
-	public var name: String!
+	open var name: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeLiveBroadcastTopicSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		releaseDate <- map["releaseDate"]
 		name <- map["name"]
 	}

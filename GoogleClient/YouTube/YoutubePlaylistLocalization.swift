@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The PlaylistLocalization model type for use with the Youtube API
-public class YoutubePlaylistLocalization: ObjectType {
+open class YoutubePlaylistLocalization: ObjectType {
 	/// The localized strings for playlist's title.
-	public var title: String!
+	open var title: String!
 	/// The localized strings for playlist's description.
-	public var description: String!
+	open var description: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubePlaylistLocalization: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		title <- map["title"]
 		description <- map["description"]
 	}

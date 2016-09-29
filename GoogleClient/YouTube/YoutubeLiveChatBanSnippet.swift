@@ -18,16 +18,16 @@ public enum YoutubeLiveChatBanSnippetType: String {
 }
 
 /// The LiveChatBanSnippet model type for use with the Youtube API
-public class YoutubeLiveChatBanSnippet: ObjectType {
+open class YoutubeLiveChatBanSnippet: ObjectType {
 	/// The duration of a ban, only filled if the ban has type TEMPORARY.
-	public var banDurationSeconds: UInt64!
+	open var banDurationSeconds: UInt64!
 	/// The chat this ban is pertinent to.
-	public var liveChatId: String!
-	public var bannedUserDetails: YoutubeChannelProfileDetails!
+	open var liveChatId: String!
+	open var bannedUserDetails: YoutubeChannelProfileDetails!
 	/// The type of ban.
-	public var type: YoutubeLiveChatBanSnippetType!
+	open var type: YoutubeLiveChatBanSnippetType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -35,7 +35,7 @@ public class YoutubeLiveChatBanSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		banDurationSeconds <- map["banDurationSeconds"]
 		liveChatId <- map["liveChatId"]
 		bannedUserDetails <- map["bannedUserDetails"]

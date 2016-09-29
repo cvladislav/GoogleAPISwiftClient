@@ -9,7 +9,7 @@
 import Foundation
 
 public struct UploadParameters {
-    public var progressHandler: ((bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) -> ())? = nil
+    public var progressHandler: ((_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> ())? = nil
     public var MIMEType: String
     public var data: Data
     

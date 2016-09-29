@@ -10,21 +10,21 @@ import Foundation
 import ObjectMapper
 
 /// The BlogPerUserInfo model type for use with the Blogger API
-public class BloggerBlogPerUserInfo: GoogleObject {
+open class BloggerBlogPerUserInfo: GoogleObject {
 	/// ID of the User
-	public var userId: String!
+	open var userId: String!
 	/// The Photo Album Key for the user when adding photos to the blog
-	public var photosAlbumKey: String!
+	open var photosAlbumKey: String!
 	/// True if the user has Admin level access to the blog.
-	public var hasAdminAccess: Bool!
+	open var hasAdminAccess: Bool!
 	/// Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).
-	public var role: String!
+	open var role: String!
 	/// ID of the Blog resource
-	public var blogId: String!
+	open var blogId: String!
 	/// The kind of this entity. Always blogger#blogPerUserInfo
-	public var kind: String = "blogger#blogPerUserInfo"
+	open var kind: String = "blogger#blogPerUserInfo"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -32,7 +32,7 @@ public class BloggerBlogPerUserInfo: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		userId <- map["userId"]
 		photosAlbumKey <- map["photosAlbumKey"]
 		hasAdminAccess <- map["hasAdminAccess"]

@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The PostUserInfo model type for use with the Blogger API
-public class BloggerPostUserInfo: GoogleObject {
+open class BloggerPostUserInfo: GoogleObject {
 	/// The Post resource.
-	public var post: BloggerPost!
+	open var post: BloggerPost!
 	/// Information about a User for the Post.
-	public var postUserInfo: BloggerPostPerUserInfo!
+	open var postUserInfo: BloggerPostPerUserInfo!
 	/// The kind of this entity. Always blogger#postUserInfo
-	public var kind: String = "blogger#postUserInfo"
+	open var kind: String = "blogger#postUserInfo"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class BloggerPostUserInfo: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		post <- map["post"]
 		postUserInfo <- map["post_user_info"]
 		kind <- map["kind"]

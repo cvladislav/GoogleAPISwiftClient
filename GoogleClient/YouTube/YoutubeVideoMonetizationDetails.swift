@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The VideoMonetizationDetails model type for use with the Youtube API
-public class YoutubeVideoMonetizationDetails: ObjectType {
+open class YoutubeVideoMonetizationDetails: ObjectType {
 	/// The value of access indicates whether the video can be monetized or not.
-	public var access: YoutubeAccessPolicy!
+	open var access: YoutubeAccessPolicy!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeVideoMonetizationDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		access <- map["access"]
 	}
 }

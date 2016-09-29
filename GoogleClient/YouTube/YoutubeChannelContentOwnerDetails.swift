@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelContentOwnerDetails model type for use with the Youtube API
-public class YoutubeChannelContentOwnerDetails: ObjectType {
+open class YoutubeChannelContentOwnerDetails: ObjectType {
 	/// The date and time of when the channel was linked to the content owner. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var timeLinked: Date!
+	open var timeLinked: Date!
 	/// The ID of the content owner linked to the channel.
-	public var contentOwner: String!
+	open var contentOwner: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeChannelContentOwnerDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		timeLinked <- (map["timeLinked"], RFC3339Transform())
 		contentOwner <- map["contentOwner"]
 	}

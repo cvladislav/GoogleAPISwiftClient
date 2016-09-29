@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelBrandingSettings model type for use with the Youtube API
-public class YoutubeChannelBrandingSettings: ObjectType {
+open class YoutubeChannelBrandingSettings: ObjectType {
 	/// Branding properties for the channel view.
-	public var channel: YoutubeChannelSettings!
+	open var channel: YoutubeChannelSettings!
 	/// Branding properties for branding images.
-	public var image: YoutubeImageSettings!
+	open var image: YoutubeImageSettings!
 	/// Branding properties for the watch page.
-	public var watch: YoutubeWatchSettings!
+	open var watch: YoutubeWatchSettings!
 	/// Additional experimental branding properties.
-	public var hints: [YoutubePropertyValue]!
+	open var hints: [YoutubePropertyValue]!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeChannelBrandingSettings: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channel <- map["channel"]
 		image <- map["image"]
 		watch <- map["watch"]

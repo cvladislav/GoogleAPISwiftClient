@@ -41,17 +41,17 @@ public protocol GoogleObjectList: GoogleObject, ListType {
 
 class RFC3339Transform: TransformType {
 
-    func transformFromJSON(_ value: AnyObject?) -> Date? {
+    func transformFromJSON(_ value: Any?) -> Date? {
 
         guard value != nil else { return nil }
 
         // Create date formatter
         //        NSDateFormatter *dateFormatter = nil;
         //        if (!dateFormatter) {
-        let en_US_POSIX = Locale(localeIdentifier: "en_US_POSIX")
+        let en_US_POSIX = Locale(identifier: "en_US_POSIX")
         let dateFormatter = DateFormatter()
         dateFormatter.locale = en_US_POSIX
-        dateFormatter.timeZone = TimeZone(forSecondsFromGMT: 0)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         //        }
 
         // Process
@@ -64,7 +64,7 @@ class RFC3339Transform: TransformType {
         if RFC3339String.characters.count > 20 {
             let nsRange = NSMakeRange(20, RFC3339String.characters.count - 20)
             // Bridge String to NSString
-            let RFC3339StringAsNSString: NSString = RFC3339String
+            let RFC3339StringAsNSString: NSString = RFC3339String as NSString
             RFC3339String = RFC3339StringAsNSString.replacingOccurrences(of: ":", with: "", options: [], range: nsRange)
 
         }
@@ -91,10 +91,10 @@ class RFC3339Transform: TransformType {
 
     func transformToJSON(_ value: Date?) -> String? {
         guard value != nil else { return nil }
-        let en_US_POSIX = Locale(localeIdentifier: "en_US_POSIX")
+        let en_US_POSIX = Locale(identifier: "en_US_POSIX")
         let dateFormatter = DateFormatter()
         dateFormatter.locale = en_US_POSIX
-        dateFormatter.timeZone = TimeZone(forSecondsFromGMT: 0)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         var string: String?
         if string == nil { // 1996-12-19T16:39:57-0800

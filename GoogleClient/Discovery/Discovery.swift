@@ -9,39 +9,38 @@
 import Foundation
 import ObjectMapper
 
-public class Discovery: GoogleService {
+open class Discovery: GoogleService {
     var apiNameInURL: String = "discovery"
     var apiVersionString: String = "v1"
     
-    public let fetcher : GoogleServiceFetcher = GoogleServiceFetcher()
+    open let fetcher : GoogleServiceFetcher = GoogleServiceFetcher()
     
     public required init() {
         
     }
     
-    public var alt: DiscoveryAlt?
-    public var fields: String?
-    public var prettyPrint: Bool?
-    public var quotaUser: String?
-    public var userIp: String?
+    open var alt: DiscoveryAlt?
+    open var fields: String?
+    open var prettyPrint: Bool?
+    open var quotaUser: String?
+    open var userIp: String?
     
-    public func getDiscoveryDocument(forAPI api: String, version /* begins with 'v' followed by number */: String, completionHandler: (restDescription: DiscoveryRestDescription?, error: ErrorProtocol?) -> ()) {
+    open func getDiscoveryDocument(forAPI api: String, version /* begins with 'v' followed by number */: String, completionHandler: @escaping (_ restDescription: DiscoveryRestDescription?, _ error: Error?) -> ()) {
         let queryParams = setUpQueryParams()
         fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "apis/\(api)/\(version)/rest", queryParams: queryParams) { (JSON, error) -> () in
             if error != nil {
-                completionHandler(restDescription: nil, error: error)
-            } else if JSON != nil {
-                let jsonString = JSON!
-                let restDescription = Mapper<DiscoveryRestDescription>().map(jsonString)
-                completionHandler(restDescription: restDescription, error: nil)
+                completionHandler(nil, error)
+            } else if let json = JSON {
+                let restDescription = Mapper<DiscoveryRestDescription>().map(JSON: json)
+                completionHandler(restDescription, nil)
             }
         }
     }
     
-    public var name: String?
-    public var preferred: Bool?
+    open var name: String?
+    open var preferred: Bool?
     
-    public func listAPIs(_ completionHandler: (list: DiscoveryDirectoryList?, error: ErrorProtocol?) -> ()) {
+    open func listAPIs(_ completionHandler: @escaping (_ list: DiscoveryDirectoryList?, _ error: Error?) -> ()) {
         var queryParams = setUpQueryParams()
         if let name = name {
             queryParams.updateValue(name, forKey: "name")
@@ -52,10 +51,10 @@ public class Discovery: GoogleService {
         
         fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "apis", queryParams: queryParams) { (JSON, error) -> () in
             if error != nil {
-                completionHandler(list: nil, error: error)
-            } else if JSON != nil {
-                let list = Mapper<DiscoveryDirectoryList>().map(JSON)
-                completionHandler(list: list, error: nil)
+                completionHandler(nil, error)
+            } else if let json = JSON {
+                let list = Mapper<DiscoveryDirectoryList>().map(JSON: json)
+                completionHandler(list, nil)
             }
         }
     }

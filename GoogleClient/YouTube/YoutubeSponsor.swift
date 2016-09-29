@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The Sponsor model type for use with the Youtube API
-public class YoutubeSponsor: GoogleObject {
+open class YoutubeSponsor: GoogleObject {
 	/// The snippet object contains basic details about the sponsor.
-	public var snippet: YoutubeSponsorSnippet!
+	open var snippet: YoutubeSponsorSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube assigns to uniquely identify the sponsor.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#sponsor".
-	public var kind: String = "youtube#sponsor"
+	open var kind: String = "youtube#sponsor"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeSponsor: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

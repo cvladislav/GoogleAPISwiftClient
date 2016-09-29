@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatBan model type for use with the Youtube API
-public class YoutubeLiveChatBan: GoogleObject {
+open class YoutubeLiveChatBan: GoogleObject {
 	/// The snippet object contains basic details about the ban.
-	public var snippet: YoutubeLiveChatBanSnippet!
+	open var snippet: YoutubeLiveChatBanSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube assigns to uniquely identify the ban.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatBan".
-	public var kind: String = "youtube#liveChatBan"
+	open var kind: String = "youtube#liveChatBan"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeLiveChatBan: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

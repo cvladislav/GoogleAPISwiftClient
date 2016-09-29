@@ -10,25 +10,25 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatMessageAuthorDetails model type for use with the Youtube API
-public class YoutubeLiveChatMessageAuthorDetails: ObjectType {
+open class YoutubeLiveChatMessageAuthorDetails: ObjectType {
 	/// The channel's URL.
-	public var channelUrl: String!
+	open var channelUrl: String!
 	/// The YouTube channel ID.
-	public var channelId: String!
+	open var channelId: String!
 	/// The channels's avatar URL.
-	public var profileImageUrl: String!
+	open var profileImageUrl: String!
 	/// The channel's display name.
-	public var displayName: String!
+	open var displayName: String!
 	/// Whether the author is the owner of the live chat.
-	public var isChatOwner: Bool!
+	open var isChatOwner: Bool!
 	/// Whether the author is a sponsor of the live chat.
-	public var isChatSponsor: Bool!
+	open var isChatSponsor: Bool!
 	/// Whether the author's identity has been verified by YouTube.
-	public var isVerified: Bool!
+	open var isVerified: Bool!
 	/// Whether the author is a moderator of the live chat.
-	public var isChatModerator: Bool!
+	open var isChatModerator: Bool!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -36,7 +36,7 @@ public class YoutubeLiveChatMessageAuthorDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channelUrl <- map["channelUrl"]
 		channelId <- map["channelId"]
 		profileImageUrl <- map["profileImageUrl"]

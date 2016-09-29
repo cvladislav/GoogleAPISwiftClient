@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The I18nRegion model type for use with the Youtube API
-public class YoutubeI18nRegion: GoogleObject {
+open class YoutubeI18nRegion: GoogleObject {
 	/// The snippet object contains basic details about the i18n region, such as region code and human-readable name.
-	public var snippet: YoutubeI18nRegionSnippet!
+	open var snippet: YoutubeI18nRegionSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube uses to uniquely identify the i18n region.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#i18nRegion".
-	public var kind: String = "youtube#i18nRegion"
+	open var kind: String = "youtube#i18nRegion"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeI18nRegion: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

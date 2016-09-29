@@ -58,23 +58,23 @@ public enum YoutubeChannelSectionSnippetStyle: String {
 }
 
 /// The ChannelSectionSnippet model type for use with the Youtube API
-public class YoutubeChannelSectionSnippet: ObjectType {
+open class YoutubeChannelSectionSnippet: ObjectType {
 	/// The ID that YouTube uses to uniquely identify the channel that published the channel section.
-	public var channelId: String!
+	open var channelId: String!
 	/// The style of the channel section.
-	public var style: YoutubeChannelSectionSnippetStyle!
+	open var style: YoutubeChannelSectionSnippetStyle!
 	/// The channel section's title for multiple_playlists and multiple_channels.
-	public var title: String!
+	open var title: String!
 	/// Localized title, read-only.
-	public var localized: YoutubeChannelSectionLocalization!
+	open var localized: YoutubeChannelSectionLocalization!
 	/// The language of the channel section's default title and description.
-	public var defaultLanguage: String!
+	open var defaultLanguage: String!
 	/// The position of the channel section in the channel.
-	public var position: UInt!
+	open var position: UInt!
 	/// The type of the channel section.
-	public var type: YoutubeChannelSectionSnippetType!
+	open var type: YoutubeChannelSectionSnippetType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -82,7 +82,7 @@ public class YoutubeChannelSectionSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channelId <- map["channelId"]
 		style <- map["style"]
 		title <- map["title"]

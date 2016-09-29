@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The VideoTopicDetails model type for use with the Youtube API
-public class YoutubeVideoTopicDetails: ObjectType {
+open class YoutubeVideoTopicDetails: ObjectType {
 	/// A list of Freebase topic IDs that are centrally associated with the video. These are topics that are centrally featured in the video, and it can be said that the video is mainly about each of these. You can retrieve information about each topic using the Freebase Topic API.
-	public var topicIds: [String]!
+	open var topicIds: [String]!
 	/// Similar to topic_id, except that these topics are merely relevant to the video. These are topics that may be mentioned in, or appear in the video. You can retrieve information about each topic using Freebase Topic API.
-	public var relevantTopicIds: [String]!
+	open var relevantTopicIds: [String]!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeVideoTopicDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		topicIds <- map["topicIds"]
 		relevantTopicIds <- map["relevantTopicIds"]
 	}

@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The LocalizedString model type for use with the Youtube API
-public class YoutubeLocalizedString: ObjectType {
-	public var language: String!
-	public var value: String!
+open class YoutubeLocalizedString: ObjectType {
+	open var language: String!
+	open var value: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeLocalizedString: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		language <- map["language"]
 		value <- map["value"]
 	}

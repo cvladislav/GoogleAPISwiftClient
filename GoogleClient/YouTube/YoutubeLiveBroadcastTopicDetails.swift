@@ -10,10 +10,10 @@ import Foundation
 import ObjectMapper
 
 /// The LiveBroadcastTopicDetails model type for use with the Youtube API
-public class YoutubeLiveBroadcastTopicDetails: ObjectType {
-	public var topics: [YoutubeLiveBroadcastTopic]!
+open class YoutubeLiveBroadcastTopicDetails: ObjectType {
+	open var topics: [YoutubeLiveBroadcastTopic]!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -21,7 +21,7 @@ public class YoutubeLiveBroadcastTopicDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		topics <- map["topics"]
 	}
 }

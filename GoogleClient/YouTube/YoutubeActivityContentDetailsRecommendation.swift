@@ -22,15 +22,15 @@ public enum YoutubeActivityContentDetailsRecommendationReason: String {
 }
 
 /// The ActivityContentDetailsRecommendation model type for use with the Youtube API
-public class YoutubeActivityContentDetailsRecommendation: ObjectType {
+open class YoutubeActivityContentDetailsRecommendation: ObjectType {
 	/// The resourceId object contains information that identifies the recommended resource.
-	public var resourceId: YoutubeResourceId!
+	open var resourceId: YoutubeResourceId!
 	/// The seedResourceId object contains information about the resource that caused the recommendation.
-	public var seedResourceId: YoutubeResourceId!
+	open var seedResourceId: YoutubeResourceId!
 	/// The reason that the resource is recommended to the user.
-	public var reason: YoutubeActivityContentDetailsRecommendationReason!
+	open var reason: YoutubeActivityContentDetailsRecommendationReason!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -38,7 +38,7 @@ public class YoutubeActivityContentDetailsRecommendation: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resourceId <- map["resourceId"]
 		seedResourceId <- map["seedResourceId"]
 		reason <- map["reason"]

@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The VideoAbuseReportReason model type for use with the Youtube API
-public class YoutubeVideoAbuseReportReason: GoogleObject {
+open class YoutubeVideoAbuseReportReason: GoogleObject {
 	/// The snippet object contains basic details about the abuse report reason.
-	public var snippet: YoutubeVideoAbuseReportReasonSnippet!
+	open var snippet: YoutubeVideoAbuseReportReasonSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID of this abuse report reason.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#videoAbuseReportReason".
-	public var kind: String = "youtube#videoAbuseReportReason"
+	open var kind: String = "youtube#videoAbuseReportReason"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeVideoAbuseReportReason: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

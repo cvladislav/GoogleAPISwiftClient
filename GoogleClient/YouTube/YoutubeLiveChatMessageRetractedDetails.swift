@@ -10,10 +10,10 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatMessageRetractedDetails model type for use with the Youtube API
-public class YoutubeLiveChatMessageRetractedDetails: ObjectType {
-	public var retractedMessageId: String!
+open class YoutubeLiveChatMessageRetractedDetails: ObjectType {
+	open var retractedMessageId: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -21,7 +21,7 @@ public class YoutubeLiveChatMessageRetractedDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		retractedMessageId <- map["retractedMessageId"]
 	}
 }

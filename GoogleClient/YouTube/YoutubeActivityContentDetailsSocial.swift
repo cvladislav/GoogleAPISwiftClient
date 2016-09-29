@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The ActivityContentDetailsSocial model type for use with the Youtube API
-public class YoutubeActivityContentDetailsSocial: ObjectType {
+open class YoutubeActivityContentDetailsSocial: ObjectType {
 	/// The author of the social network post.
-	public var author: String!
+	open var author: String!
 	/// The URL of the social network post.
-	public var referenceUrl: String!
+	open var referenceUrl: String!
 	/// The resourceId object encapsulates information that identifies the resource associated with a social network post.
-	public var resourceId: YoutubeResourceId!
+	open var resourceId: YoutubeResourceId!
 	/// An image of the post's author.
-	public var imageUrl: String!
+	open var imageUrl: String!
 	/// The name of the social network.
-	public var type: YoutubeActivityContentDetailsSocialType!
+	open var type: YoutubeActivityContentDetailsSocialType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeActivityContentDetailsSocial: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		author <- map["author"]
 		referenceUrl <- map["referenceUrl"]
 		resourceId <- map["resourceId"]

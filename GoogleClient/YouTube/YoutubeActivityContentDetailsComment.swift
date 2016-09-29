@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The ActivityContentDetailsComment model type for use with the Youtube API
-public class YoutubeActivityContentDetailsComment: ObjectType {
+open class YoutubeActivityContentDetailsComment: ObjectType {
 	/// The resourceId object contains information that identifies the resource associated with the comment.
-	public var resourceId: YoutubeResourceId!
+	open var resourceId: YoutubeResourceId!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeActivityContentDetailsComment: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resourceId <- map["resourceId"]
 	}
 }

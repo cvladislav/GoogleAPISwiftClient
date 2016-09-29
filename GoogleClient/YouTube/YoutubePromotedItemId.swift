@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The PromotedItemId model type for use with the Youtube API
-public class YoutubePromotedItemId: ObjectType {
+open class YoutubePromotedItemId: ObjectType {
 	/// If the promoted item represents a video, this field represents the unique YouTube ID identifying it. This field will be present only if type has the value video.
-	public var videoId: String!
+	open var videoId: String!
 	/// If type is recentUpload, this field identifies the channel from which to take the recent upload. If missing, the channel is assumed to be the same channel for which the invideoPromotion is set.
-	public var recentlyUploadedBy: String!
+	open var recentlyUploadedBy: String!
 	/// If the promoted item represents a website, this field represents the url pointing to the website. This field will be present only if type has the value website.
-	public var websiteUrl: String!
+	open var websiteUrl: String!
 	/// Describes the type of the promoted item.
-	public var type: YoutubePromotedItemIdType!
+	open var type: YoutubePromotedItemIdType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubePromotedItemId: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		videoId <- map["videoId"]
 		recentlyUploadedBy <- map["recentlyUploadedBy"]
 		websiteUrl <- map["websiteUrl"]

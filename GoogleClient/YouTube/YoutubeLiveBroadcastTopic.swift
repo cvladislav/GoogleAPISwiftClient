@@ -16,15 +16,15 @@ public enum YoutubeLiveBroadcastTopicType: String {
 }
 
 /// The LiveBroadcastTopic model type for use with the Youtube API
-public class YoutubeLiveBroadcastTopic: ObjectType {
+open class YoutubeLiveBroadcastTopic: ObjectType {
 	/// Information about the topic matched.
-	public var snippet: YoutubeLiveBroadcastTopicSnippet!
+	open var snippet: YoutubeLiveBroadcastTopicSnippet!
 	/// If this flag is set it means that we have not been able to match the topic title and type provided to a known entity.
-	public var unmatched: Bool!
+	open var unmatched: Bool!
 	/// The type of the topic.
-	public var type: YoutubeLiveBroadcastTopicType!
+	open var type: YoutubeLiveBroadcastTopicType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -32,7 +32,7 @@ public class YoutubeLiveBroadcastTopic: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		unmatched <- map["unmatched"]
 		type <- map["type"]

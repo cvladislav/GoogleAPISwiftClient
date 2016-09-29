@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The PlaylistStatus model type for use with the Youtube API
-public class YoutubePlaylistStatus: ObjectType {
+open class YoutubePlaylistStatus: ObjectType {
 	/// The playlist's privacy status.
-	public var privacyStatus: YoutubePlaylistStatusPrivacyStatus!
+	open var privacyStatus: YoutubePlaylistStatusPrivacyStatus!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubePlaylistStatus: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		privacyStatus <- map["privacyStatus"]
 	}
 }

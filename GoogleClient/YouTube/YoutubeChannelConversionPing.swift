@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelConversionPing model type for use with the Youtube API
-public class YoutubeChannelConversionPing: ObjectType {
+open class YoutubeChannelConversionPing: ObjectType {
 	/// Defines the context of the ping.
-	public var context: YoutubeChannelConversionPingContext!
+	open var context: YoutubeChannelConversionPingContext!
 	/// The url (without the schema) that the player shall send the ping to. It's at caller's descretion to decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append biscotti authentication (ms param in case of mobile, for example) to this ping.
-	public var conversionUrl: String!
+	open var conversionUrl: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeChannelConversionPing: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		context <- map["context"]
 		conversionUrl <- map["conversionUrl"]
 	}

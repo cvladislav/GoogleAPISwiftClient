@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The Blog subtype of the Post model type for use with the Blogger API
-public class BloggerPostBlog: ObjectType {
+open class BloggerPostBlog: ObjectType {
 	/// The identifier of the Blog that contains this Post.
-	public var id: String!
+	open var id: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,53 +22,53 @@ public class BloggerPostBlog: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		id <- map["id"]
 	}
 }
 
 /// The Post model type for use with the Blogger API
-public class BloggerPost: GoogleObject {
+open class BloggerPost: GoogleObject {
 	/// The title of the Post.
-	public var title: String!
+	open var title: String!
 	/// The content of the Post. May contain HTML markup.
-	public var content: String!
+	open var content: String!
 	/// Display image for the Post.
-	public var images: [BloggerPostImage]!
+	open var images: [BloggerPostImage]!
 	/// RFC 3339 date-time when this Post was published.
-	public var published: Date!
+	open var published: Date!
 	/// The JSON meta-data for the Post.
-	public var customMetaData: String!
+	open var customMetaData: String!
 	/// The kind of this entity. Always blogger#post
-	public var kind: String = "blogger#post"
+	open var kind: String = "blogger#post"
 	/// The location for geotagged posts.
-	public var location: BloggerPostLocation!
+	open var location: BloggerPostLocation!
 	/// Etag of the resource.
-	public var etag: String!
+	open var etag: String!
 	/// RFC 3339 date-time when this Post was last updated.
-	public var updated: Date!
+	open var updated: Date!
 	/// The author of this Post.
-	public var author: BloggerPostAuthor!
+	open var author: BloggerPostAuthor!
 	/// The title link URL, similar to atom's related link.
-	public var titleLink: String!
+	open var titleLink: String!
 	/// Data about the blog containing this Post.
-	public var blog: BloggerPostBlog!
+	open var blog: BloggerPostBlog!
 	/// The identifier of this Post.
-	public var id: String!
+	open var id: String!
 	/// Comment control and display setting for readers of this post.
-	public var readerComments: String!
+	open var readerComments: String!
 	/// The list of labels this Post was tagged with.
-	public var labels: [String]!
+	open var labels: [String]!
 	/// The container of comments on this Post.
-	public var replies: BloggerPostReplies!
+	open var replies: BloggerPostReplies!
 	/// Status of the post. Only set for admin-level requests
-	public var status: String!
+	open var status: String!
 	/// The API REST URL to fetch this resource from.
-	public var selfLink: String!
+	open var selfLink: String!
 	/// The URL where this Post is displayed.
-	public var url: String!
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -76,7 +76,7 @@ public class BloggerPost: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		title <- map["title"]
 		content <- map["content"]
 		images <- map["images"]
@@ -100,17 +100,17 @@ public class BloggerPost: GoogleObject {
 }
 
 /// The Author subtype of the Post model type for use with the Blogger API
-public class BloggerPostAuthor: ObjectType {
+open class BloggerPostAuthor: ObjectType {
 	/// The Post author's avatar.
-	public var image: BloggerPostImage!
+	open var image: BloggerPostImage!
 	/// The identifier of the Post creator.
-	public var id: String!
+	open var id: String!
 	/// The display name.
-	public var displayName: String!
+	open var displayName: String!
 	/// The URL of the Post creator's Profile page.
-	public var url: String!
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -118,7 +118,7 @@ public class BloggerPostAuthor: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		image <- map["image"]
 		id <- map["id"]
 		displayName <- map["displayName"]
@@ -127,10 +127,10 @@ public class BloggerPostAuthor: ObjectType {
 }
 
 /// The Images subtype of the Post model type for use with the Blogger API
-public class BloggerPostImage: ObjectType {
-	public var url: String!
+open class BloggerPostImage: ObjectType {
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -138,23 +138,23 @@ public class BloggerPostImage: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		url <- map["url"]
 	}
 }
 
 /// The Location subtype of the Post model type for use with the Blogger API
-public class BloggerPostLocation: ObjectType {
+open class BloggerPostLocation: ObjectType {
 	/// Location's longitude.
-	public var lng: Double!
+	open var lng: Double!
 	/// Location's latitude.
-	public var lat: Double!
+	open var lat: Double!
 	/// Location's viewport span. Can be used when rendering a map preview.
-	public var span: String!
+	open var span: String!
 	/// Location name.
-	public var name: String!
+	open var name: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -162,7 +162,7 @@ public class BloggerPostLocation: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		lng <- map["lng"]
 		lat <- map["lat"]
 		span <- map["span"]
@@ -171,15 +171,15 @@ public class BloggerPostLocation: ObjectType {
 }
 
 /// The Replies subtype of the Post model type for use with the Blogger API
-public class BloggerPostReplies: ObjectType {
+open class BloggerPostReplies: ObjectType {
 	/// The List of Comments for this Post.
-	public var items: [BloggerComment]!
+	open var items: [BloggerComment]!
 	/// The URL of the comments on this post.
-	public var selfLink: String!
+	open var selfLink: String!
 	/// The count of comments on this post.
-	public var totalItems: Int64!
+	open var totalItems: Int64!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -187,7 +187,7 @@ public class BloggerPostReplies: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		items <- map["items"]
 		selfLink <- map["selfLink"]
 		totalItems <- map["totalItems"]
@@ -195,11 +195,11 @@ public class BloggerPostReplies: ObjectType {
 }
 
 /// The Image subtype of the PostAuthor model type for use with the Blogger API
-public class BloggerPostAuthorImage: ObjectType {
+open class BloggerPostAuthorImage: ObjectType {
 	/// The Post author's avatar URL.
-	public var url: String!
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -207,7 +207,7 @@ public class BloggerPostAuthorImage: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		url <- map["url"]
 	}
 }

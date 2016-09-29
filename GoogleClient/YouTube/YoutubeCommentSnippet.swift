@@ -34,41 +34,41 @@ public enum YoutubeCommentSnippetViewerRating: String {
 }
 
 /// The CommentSnippet model type for use with the Youtube API
-public class YoutubeCommentSnippet: ObjectType {
+open class YoutubeCommentSnippet: ObjectType {
 	/// The date and time when was last updated . The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var updatedAt: Date!
+	open var updatedAt: Date!
 	/// The id of the corresponding YouTube channel. In case of a channel comment this is the channel the comment refers to. In case of a video comment it's the video's channel.
-	public var channelId: String!
+	open var channelId: String!
 	/// Link to the author's Google+ profile, if any.
-	public var authorGoogleplusProfileUrl: String!
+	open var authorGoogleplusProfileUrl: String!
 	/// The comment's moderation status. Will not be set if the comments were requested through the id filter.
-	public var moderationStatus: YoutubeCommentSnippetModerationStatus!
+	open var moderationStatus: YoutubeCommentSnippetModerationStatus!
 	/// The comment's original raw text as initially posted or last updated. The original text will only be returned if it is accessible to the viewer, which is only guaranteed if the viewer is the comment's author.
-	public var textOriginal: String!
+	open var textOriginal: String!
 	/// The rating the viewer has given to this comment. For the time being this will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may change in the future.
-	public var viewerRating: YoutubeCommentSnippetViewerRating!
+	open var viewerRating: YoutubeCommentSnippetViewerRating!
 	/// The comment's text. The format is either plain text or HTML dependent on what has been requested. Even the plain text representation may differ from the text originally posted in that it may replace video links with video titles etc.
-	public var textDisplay: String!
+	open var textDisplay: String!
 	/// The id of the author's YouTube channel, if any.
-	public var authorChannelId: Any!
+	open var authorChannelId: Any!
 	/// The ID of the video the comment refers to, if any.
-	public var videoId: String!
+	open var videoId: String!
 	/// The date and time when the comment was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var publishedAt: Date!
+	open var publishedAt: Date!
 	/// The total number of likes this comment has received.
-	public var likeCount: UInt!
+	open var likeCount: UInt!
 	/// The unique id of the parent comment, only set for replies.
-	public var parentId: String!
+	open var parentId: String!
 	/// Link to the author's YouTube channel, if any.
-	public var authorChannelUrl: String!
+	open var authorChannelUrl: String!
 	/// Whether the current viewer can rate this comment.
-	public var canRate: Bool!
+	open var canRate: Bool!
 	/// The name of the user who posted the comment.
-	public var authorDisplayName: String!
+	open var authorDisplayName: String!
 	/// The URL for the avatar of the user who posted the comment.
-	public var authorProfileImageUrl: String!
+	open var authorProfileImageUrl: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -76,7 +76,7 @@ public class YoutubeCommentSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		updatedAt <- (map["updatedAt"], RFC3339Transform())
 		channelId <- map["channelId"]
 		authorGoogleplusProfileUrl <- map["authorGoogleplusProfileUrl"]

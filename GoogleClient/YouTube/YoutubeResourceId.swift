@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The ResourceId model type for use with the Youtube API
-public class YoutubeResourceId: ObjectType {
+open class YoutubeResourceId: ObjectType {
 	/// The ID that YouTube uses to uniquely identify the referred resource, if that resource is a channel. This property is only present if the resourceId.kind value is youtube#channel.
-	public var channelId: String!
+	open var channelId: String!
 	/// The ID that YouTube uses to uniquely identify the referred resource, if that resource is a video. This property is only present if the resourceId.kind value is youtube#video.
-	public var videoId: String!
+	open var videoId: String!
 	/// The ID that YouTube uses to uniquely identify the referred resource, if that resource is a playlist. This property is only present if the resourceId.kind value is youtube#playlist.
-	public var playlistId: String!
+	open var playlistId: String!
 	/// The type of the API resource.
-	public var kind: String!
+	open var kind: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeResourceId: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channelId <- map["channelId"]
 		videoId <- map["videoId"]
 		playlistId <- map["playlistId"]

@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The Caption model type for use with the Youtube API
-public class YoutubeCaption: GoogleObject {
+open class YoutubeCaption: GoogleObject {
 	/// The snippet object contains basic details about the caption.
-	public var snippet: YoutubeCaptionSnippet!
+	open var snippet: YoutubeCaptionSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube uses to uniquely identify the caption track.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#caption".
-	public var kind: String = "youtube#caption"
+	open var kind: String = "youtube#caption"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeCaption: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

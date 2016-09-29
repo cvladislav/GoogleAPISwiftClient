@@ -36,25 +36,25 @@ public enum YoutubeActivitySnippetType: String {
 }
 
 /// The ActivitySnippet model type for use with the Youtube API
-public class YoutubeActivitySnippet: ObjectType {
+open class YoutubeActivitySnippet: ObjectType {
 	/// A map of thumbnail images associated with the resource that is primarily associated with the activity. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail.
-	public var thumbnails: YoutubeThumbnailDetails!
+	open var thumbnails: YoutubeThumbnailDetails!
 	/// The ID that YouTube uses to uniquely identify the channel associated with the activity.
-	public var channelId: String!
+	open var channelId: String!
 	/// The title of the resource primarily associated with the activity.
-	public var title: String!
+	open var title: String!
 	/// The group ID associated with the activity. A group ID identifies user events that are associated with the same user and resource. For example, if a user rates a video and marks the same video as a favorite, the entries for those events would have the same group ID in the user's activity feed. In your user interface, you can avoid repetition by grouping events with the same groupId value.
-	public var groupId: String!
+	open var groupId: String!
 	/// The description of the resource primarily associated with the activity.
-	public var description: String!
+	open var description: String!
 	/// The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var publishedAt: Date!
+	open var publishedAt: Date!
 	/// Channel title for the channel responsible for this activity
-	public var channelTitle: String!
+	open var channelTitle: String!
 	/// The type of activity that the resource describes.
-	public var type: YoutubeActivitySnippetType!
+	open var type: YoutubeActivitySnippetType!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -62,7 +62,7 @@ public class YoutubeActivitySnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		thumbnails <- map["thumbnails"]
 		channelId <- map["channelId"]
 		title <- map["title"]

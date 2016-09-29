@@ -10,23 +10,23 @@ import Foundation
 import ObjectMapper
 
 /// The FanFundingEventSnippet model type for use with the Youtube API
-public class YoutubeFanFundingEventSnippet: ObjectType {
+open class YoutubeFanFundingEventSnippet: ObjectType {
 	/// Channel id where the funding event occurred.
-	public var channelId: String!
+	open var channelId: String!
 	/// The text contents of the comment left by the user.
-	public var commentText: String!
+	open var commentText: String!
 	/// The currency in which the fund was made. ISO 4217.
-	public var currency: String!
+	open var currency: String!
 	/// A rendered string that displays the fund amount and currency (e.g., "$1.00"). The string is rendered for the given language.
-	public var displayString: String!
+	open var displayString: String!
 	/// Details about the supporter. Only filled if the event was made public by the user.
-	public var supporterDetails: YoutubeChannelProfileDetails!
+	open var supporterDetails: YoutubeChannelProfileDetails!
 	/// The amount of funding in micros of fund_currency. e.g., 1 is represented
-	public var amountMicros: UInt64!
+	open var amountMicros: UInt64!
 	/// The date and time when the funding occurred. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var createdAt: Date!
+	open var createdAt: Date!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -34,7 +34,7 @@ public class YoutubeFanFundingEventSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channelId <- map["channelId"]
 		commentText <- map["commentText"]
 		currency <- map["currency"]

@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The VideoAbuseReport model type for use with the Youtube API
-public class YoutubeVideoAbuseReport: ObjectType {
+open class YoutubeVideoAbuseReport: ObjectType {
 	/// The high-level, or primary, reason that the content is abusive. The value is an abuse report reason ID.
-	public var reasonId: String!
+	open var reasonId: String!
 	/// The ID that YouTube uses to uniquely identify the video.
-	public var videoId: String!
+	open var videoId: String!
 	/// The specific, or secondary, reason that this content is abusive (if available). The value is an abuse report reason ID that is a valid secondary reason for the primary reason.
-	public var secondaryReasonId: String!
+	open var secondaryReasonId: String!
 	/// The language that the content was viewed in.
-	public var language: String!
+	open var language: String!
 	/// Additional comments regarding the abuse report.
-	public var comments: String!
+	open var comments: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeVideoAbuseReport: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		reasonId <- map["reasonId"]
 		videoId <- map["videoId"]
 		secondaryReasonId <- map["secondaryReasonId"]

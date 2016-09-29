@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The ActivityContentDetailsLike model type for use with the Youtube API
-public class YoutubeActivityContentDetailsLike: ObjectType {
+open class YoutubeActivityContentDetailsLike: ObjectType {
 	/// The resourceId object contains information that identifies the rated resource.
-	public var resourceId: YoutubeResourceId!
+	open var resourceId: YoutubeResourceId!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeActivityContentDetailsLike: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resourceId <- map["resourceId"]
 	}
 }

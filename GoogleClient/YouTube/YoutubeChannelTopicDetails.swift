@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelTopicDetails model type for use with the Youtube API
-public class YoutubeChannelTopicDetails: ObjectType {
+open class YoutubeChannelTopicDetails: ObjectType {
 	/// A list of Freebase topic IDs associated with the channel. You can retrieve information about each topic using the Freebase Topic API.
-	public var topicIds: [String]!
+	open var topicIds: [String]!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeChannelTopicDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		topicIds <- map["topicIds"]
 	}
 }

@@ -9,28 +9,28 @@
 import Foundation
 import ObjectMapper
 
-public class YoutubeLiveChatMessageListResponse: GoogleObjectList {
+open class YoutubeLiveChatMessageListResponse: GoogleObjectList {
 	public typealias `Type` = YoutubeLiveChatMessage
 	/// A list of live chat messages.
-	public var items: [Type]!
-	public var tokenPagination: YoutubeTokenPagination!
+	open var items: [Type]!
+	open var tokenPagination: YoutubeTokenPagination!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatMessageListResponse".
-	public var kind: String = "youtube#liveChatMessageListResponse"
+	open var kind: String = "youtube#liveChatMessageListResponse"
 	/// The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
-	public var nextPageToken: String!
-	public var pageInfo: YoutubePageInfo!
+	open var nextPageToken: String!
+	open var pageInfo: YoutubePageInfo!
 	/// The visitorId identifies the visitor.
-	public var visitorId: String!
+	open var visitorId: String!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The date and time when the underlying stream went offline. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var offlineAt: Date!
+	open var offlineAt: Date!
 	/// Serialized EventId of the request which produced this response.
-	public var eventId: String!
+	open var eventId: String!
 	/// The amount of time the client should wait before polling again.
-	public var pollingIntervalMillis: UInt!
+	open var pollingIntervalMillis: UInt!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -38,7 +38,7 @@ public class YoutubeLiveChatMessageListResponse: GoogleObjectList {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		items <- map["items"]
 		tokenPagination <- map["tokenPagination"]
 		kind <- map["kind"]
@@ -56,12 +56,12 @@ public class YoutubeLiveChatMessageListResponse: GoogleObjectList {
 
 	public typealias Iterator = IndexingIterator<[Type]>
 
-	public func makeIterator() -> Iterator {
+	open func makeIterator() -> Iterator {
 		let objects = items as [Type]
 		return objects.makeIterator()
 	}
 
-	public subscript(position: Int) -> Type {
+	open subscript(position: Int) -> Type {
 		return items[position]
 	}
 }

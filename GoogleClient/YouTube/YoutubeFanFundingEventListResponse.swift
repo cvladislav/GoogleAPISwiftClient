@@ -9,24 +9,24 @@
 import Foundation
 import ObjectMapper
 
-public class YoutubeFanFundingEventListResponse: GoogleObjectList {
+open class YoutubeFanFundingEventListResponse: GoogleObjectList {
 	public typealias `Type` = YoutubeFanFundingEvent
 	/// A list of fan funding events that match the request criteria.
-	public var items: [Type]!
-	public var tokenPagination: YoutubeTokenPagination!
-	public var pageInfo: YoutubePageInfo!
+	open var items: [Type]!
+	open var tokenPagination: YoutubeTokenPagination!
+	open var pageInfo: YoutubePageInfo!
 	/// The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set.
-	public var nextPageToken: String!
+	open var nextPageToken: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#fanFundingEventListResponse".
-	public var kind: String = "youtube#fanFundingEventListResponse"
+	open var kind: String = "youtube#fanFundingEventListResponse"
 	/// The visitorId identifies the visitor.
-	public var visitorId: String!
+	open var visitorId: String!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// Serialized EventId of the request which produced this response.
-	public var eventId: String!
+	open var eventId: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -34,7 +34,7 @@ public class YoutubeFanFundingEventListResponse: GoogleObjectList {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		items <- map["items"]
 		tokenPagination <- map["tokenPagination"]
 		pageInfo <- map["pageInfo"]
@@ -50,12 +50,12 @@ public class YoutubeFanFundingEventListResponse: GoogleObjectList {
 
 	public typealias Iterator = IndexingIterator<[Type]>
 
-	public func makeIterator() -> Iterator {
+	open func makeIterator() -> Iterator {
 		let objects = items as [Type]
 		return objects.makeIterator()
 	}
 
-	public subscript(position: Int) -> Type {
+	open subscript(position: Int) -> Type {
 		return items[position]
 	}
 }

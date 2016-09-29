@@ -10,10 +10,10 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatMessageDeletedDetails model type for use with the Youtube API
-public class YoutubeLiveChatMessageDeletedDetails: ObjectType {
-	public var deletedMessageId: String!
+open class YoutubeLiveChatMessageDeletedDetails: ObjectType {
+	open var deletedMessageId: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -21,7 +21,7 @@ public class YoutubeLiveChatMessageDeletedDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		deletedMessageId <- map["deletedMessageId"]
 	}
 }

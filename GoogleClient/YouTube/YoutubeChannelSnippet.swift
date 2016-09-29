@@ -10,25 +10,25 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelSnippet model type for use with the Youtube API
-public class YoutubeChannelSnippet: ObjectType {
+open class YoutubeChannelSnippet: ObjectType {
 	/// A map of thumbnail images associated with the channel. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail.
-	public var thumbnails: YoutubeThumbnailDetails!
+	open var thumbnails: YoutubeThumbnailDetails!
 	/// The channel's title.
-	public var title: String!
+	open var title: String!
 	/// The country of the channel.
-	public var country: String!
+	open var country: String!
 	/// Localized title and description, read-only.
-	public var localized: YoutubeChannelLocalization!
+	open var localized: YoutubeChannelLocalization!
 	/// The custom url of the channel.
-	public var customUrl: String!
+	open var customUrl: String!
 	/// The description of the channel.
-	public var description: String!
+	open var description: String!
 	/// The date and time that the channel was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var publishedAt: Date!
+	open var publishedAt: Date!
 	/// The language of the channel's default title and description.
-	public var defaultLanguage: String!
+	open var defaultLanguage: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -36,7 +36,7 @@ public class YoutubeChannelSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		thumbnails <- map["thumbnails"]
 		title <- map["title"]
 		country <- map["country"]

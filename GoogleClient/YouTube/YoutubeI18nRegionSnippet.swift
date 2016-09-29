@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The I18nRegionSnippet model type for use with the Youtube API
-public class YoutubeI18nRegionSnippet: ObjectType {
+open class YoutubeI18nRegionSnippet: ObjectType {
 	/// The human-readable name of the region.
-	public var name: String!
+	open var name: String!
 	/// The region code as a 2-letter ISO country code.
-	public var gl: String!
+	open var gl: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeI18nRegionSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		name <- map["name"]
 		gl <- map["gl"]
 	}

@@ -10,27 +10,27 @@ import Foundation
 import ObjectMapper
 
 /// The User model type for use with the Blogger API
-public class BloggerUser: GoogleObject {
+open class BloggerUser: GoogleObject {
 	/// This user's locale
-	public var locale: BloggerUserLocale!
+	open var locale: BloggerUserLocale!
 	/// Profile summary information.
-	public var about: String!
+	open var about: String!
 	/// The identifier for this User.
-	public var id: String!
+	open var id: String!
 	/// The display name.
-	public var displayName: String!
+	open var displayName: String!
 	/// The kind of this entity. Always blogger#user
-	public var kind: String = "blogger#user"
+	open var kind: String = "blogger#user"
 	/// The timestamp of when this profile was created, in seconds since epoch.
-	public var created: Date!
+	open var created: Date!
 	/// The container of blogs for this user.
-	public var blogs: BloggerUserBlogs!
+	open var blogs: BloggerUserBlogs!
 	/// The API REST URL to fetch this resource from.
-	public var selfLink: String!
+	open var selfLink: String!
 	/// The user's profile page.
-	public var url: String!
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -38,7 +38,7 @@ public class BloggerUser: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		locale <- map["locale"]
 		about <- map["about"]
 		id <- map["id"]
@@ -52,11 +52,11 @@ public class BloggerUser: GoogleObject {
 }
 
 /// The Blogs subtype of the User model type for use with the Blogger API
-public class BloggerUserBlogs: ObjectType {
+open class BloggerUserBlogs: ObjectType {
 	/// The URL of the Blogs for this user.
-	public var selfLink: String!
+	open var selfLink: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -64,21 +64,21 @@ public class BloggerUserBlogs: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		selfLink <- map["selfLink"]
 	}
 }
 
 /// The Locale subtype of the User model type for use with the Blogger API
-public class BloggerUserLocale: ObjectType {
+open class BloggerUserLocale: ObjectType {
 	/// The user's country setting.
-	public var country: String!
+	open var country: String!
 	/// The user's language setting.
-	public var language: String!
+	open var language: String!
 	/// The user's language variant setting.
-	public var variant: String!
+	open var variant: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -86,7 +86,7 @@ public class BloggerUserLocale: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		country <- map["country"]
 		language <- map["language"]
 		variant <- map["variant"]

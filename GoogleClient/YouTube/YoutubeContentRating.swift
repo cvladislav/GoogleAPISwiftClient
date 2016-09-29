@@ -26,141 +26,141 @@ public enum YoutubeContentRatingMibacRating: String {
 }
 
 /// The ContentRating model type for use with the Youtube API
-public class YoutubeContentRating: ObjectType {
+open class YoutubeContentRating: ObjectType {
 	/// The video's rating from the Movie and Television Review and Classification Board (Philippines).
-	public var mtrcbRating: YoutubeContentRatingMtrcbRating!
+	open var mtrcbRating: YoutubeContentRatingMtrcbRating!
 	/// The video's National Film Registry of the Russian Federation (MKRF - Russia) rating.
-	public var russiaRating: YoutubeContentRatingRussiaRating!
+	open var russiaRating: YoutubeContentRatingRussiaRating!
 	/// The video's rating in Egypt.
-	public var egfilmRating: YoutubeContentRatingEgfilmRating!
+	open var egfilmRating: YoutubeContentRatingEgfilmRating!
 	/// The video's rating from France's Conseil supérieur de l?audiovisuel, which rates broadcast content.
-	public var csaRating: YoutubeContentRatingCsaRating!
+	open var csaRating: YoutubeContentRatingCsaRating!
 	/// The video's rating from Malta's Film Age-Classification Board.
-	public var mccaaRating: YoutubeContentRatingMccaaRating!
+	open var mccaaRating: YoutubeContentRatingMccaaRating!
 	/// The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (National Audiovisual Institute).
-	public var mekuRating: YoutubeContentRatingMekuRating!
+	open var mekuRating: YoutubeContentRatingMekuRating!
 	/// The video's Canadian Home Video Rating System (CHVRS) rating.
-	public var chvrsRating: YoutubeContentRatingChvrsRating!
+	open var chvrsRating: YoutubeContentRatingChvrsRating!
 	/// The video's rating in Peru.
-	public var pefilmRating: YoutubeContentRatingPefilmRating!
+	open var pefilmRating: YoutubeContentRatingPefilmRating!
 	/// This property has been deprecated. Use the contentDetails.contentRating.cncRating instead.
-	public var fmocRating: YoutubeContentRatingFmocRating!
+	open var fmocRating: YoutubeContentRatingFmocRating!
 	/// The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee of the National Office of Film.
-	public var rcnofRating: YoutubeContentRatingRcnofRating!
+	open var rcnofRating: YoutubeContentRatingRcnofRating!
 	/// The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA).
-	public var cnaRating: YoutubeContentRatingCnaRating!
+	open var cnaRating: YoutubeContentRatingCnaRating!
 	/// The video's General Directorate of Radio, Television and Cinematography (Mexico) rating.
-	public var rtcRating: YoutubeContentRatingRtcRating!
+	open var rtcRating: YoutubeContentRatingRtcRating!
 	/// Reasons that explain why the video received its DJCQT (Brazil) rating.
-	public var djctqRatingReasons: [String]!
+	open var djctqRatingReasons: [String]!
 	/// Rating system for Canadian TV - Canadian TV Classification System The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian English-language broadcasts. For more information, see the Canadian Broadcast Standards Council website.
-	public var catvRating: YoutubeContentRatingCatvRating!
+	open var catvRating: YoutubeContentRatingCatvRating!
 	/// voor de Classificatie van Audiovisuele Media (Netherlands).
-	public var kijkwijzerRating: YoutubeContentRatingKijkwijzerRating!
+	open var kijkwijzerRating: YoutubeContentRatingKijkwijzerRating!
 	/// The video's rating in Slovakia.
-	public var skfilmRating: YoutubeContentRatingSkfilmRating!
+	open var skfilmRating: YoutubeContentRatingSkfilmRating!
 	/// The video's rating from the Danish Film Institute's (Det Danske Filminstitut) Media Council for Children and Young People.
-	public var mccypRating: YoutubeContentRatingMccypRating!
+	open var mccypRating: YoutubeContentRatingMccypRating!
 	/// The video's British Board of Film Classification (BBFC) rating.
-	public var bbfcRating: YoutubeContentRatingBbfcRating!
+	open var bbfcRating: YoutubeContentRatingBbfcRating!
 	/// The video's rating in Estonia.
-	public var eefilmRating: YoutubeContentRatingEefilmRating!
+	open var eefilmRating: YoutubeContentRatingEefilmRating!
 	/// The video's Irish Film Classification Office (IFCO - Ireland) rating. See the IFCO website for more information.
-	public var ifcoRating: YoutubeContentRatingIfcoRating!
+	open var ifcoRating: YoutubeContentRatingIfcoRating!
 	/// The video's rating from Ireland's Raidió Teilifís Éireann.
-	public var rteRating: YoutubeContentRatingRteRating!
+	open var rteRating: YoutubeContentRatingRteRating!
 	/// The video's Consejo de Calificación Cinematográfica (Chile) rating.
-	public var cccRating: YoutubeContentRatingCccRating!
+	open var cccRating: YoutubeContentRatingCccRating!
 	/// The video's rating from Statens medieråd (Sweden's National Media Council).
-	public var smsaRating: YoutubeContentRatingSmsaRating!
+	open var smsaRating: YoutubeContentRatingSmsaRating!
 	/// The video's Departamento de Justiça, Classificação, Qualificação e Títulos (DJCQT - Brazil) rating.
-	public var djctqRating: YoutubeContentRatingDjctqRating!
+	open var djctqRating: YoutubeContentRatingDjctqRating!
 	/// The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian French-language broadcasts. For more information, see the Canadian Broadcast Standards Council website.
-	public var catvfrRating: YoutubeContentRatingCatvfrRating!
+	open var catvfrRating: YoutubeContentRatingCatvfrRating!
 	/// Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and Tourism
-	public var ecbmctRating: YoutubeContentRatingEcbmctRating!
+	open var ecbmctRating: YoutubeContentRatingEcbmctRating!
 	/// The video's Motion Picture Association of America (MPAA) rating.
-	public var mpaaRating: YoutubeContentRatingMpaaRating!
+	open var mpaaRating: YoutubeContentRatingMpaaRating!
 	/// The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board of Film Censors (BFC).
-	public var mdaRating: YoutubeContentRatingMdaRating!
+	open var mdaRating: YoutubeContentRatingMdaRating!
 	/// The video's rating in Switzerland.
-	public var chfilmRating: YoutubeContentRatingChfilmRating!
+	open var chfilmRating: YoutubeContentRatingChfilmRating!
 	/// The video's rating from Medietilsynet, the Norwegian Media Authority.
-	public var medietilsynetRating: YoutubeContentRatingMedietilsynetRating!
+	open var medietilsynetRating: YoutubeContentRatingMedietilsynetRating!
 	/// The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA - Spain) rating.
-	public var icaaRating: YoutubeContentRatingIcaaRating!
+	open var icaaRating: YoutubeContentRatingIcaaRating!
 	/// The video's rating from the Maldives National Bureau of Classification.
-	public var nbcRating: YoutubeContentRatingNbcRating!
+	open var nbcRating: YoutubeContentRatingNbcRating!
 	/// The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos in South Korea.
-	public var kmrbRating: YoutubeContentRatingKmrbRating!
+	open var kmrbRating: YoutubeContentRatingKmrbRating!
 	/// The video's rating from Thailand's Board of Film and Video Censors.
-	public var bfvcRating: YoutubeContentRatingBfvcRating!
+	open var bfvcRating: YoutubeContentRatingBfvcRating!
 	/// The video's Anatel (Asociación Nacional de Televisión) rating for Chilean television.
-	public var anatelRating: YoutubeContentRatingAnatelRating!
+	open var anatelRating: YoutubeContentRatingAnatelRating!
 	/// The video's rating in the Czech Republic.
-	public var czfilmRating: YoutubeContentRatingCzfilmRating!
+	open var czfilmRating: YoutubeContentRatingCzfilmRating!
 	/// The video's rating from Portugal's Comissão de Classificação de Espect´culos.
-	public var cceRating: YoutubeContentRatingCceRating!
+	open var cceRating: YoutubeContentRatingCceRating!
 	/// The video's rating from the Austrian Board of Media Classification (Bundesministerium für Unterricht, Kunst und Kultur).
-	public var bmukkRating: YoutubeContentRatingBmukkRating!
+	open var bmukkRating: YoutubeContentRatingBmukkRating!
 	/// The video's TV Parental Guidelines (TVPG) rating.
-	public var tvpgRating: YoutubeContentRatingTvpgRating!
+	open var tvpgRating: YoutubeContentRatingTvpgRating!
 	/// Rating system in France - Commission de classification cinematographique
-	public var cncRating: YoutubeContentRatingCncRating!
+	open var cncRating: YoutubeContentRatingCncRating!
 	/// The video's Central Board of Film Certification (CBFC - India) rating.
-	public var cbfcRating: YoutubeContentRatingCbfcRating!
+	open var cbfcRating: YoutubeContentRatingCbfcRating!
 	/// The video's rating from Hong Kong's Office for Film, Newspaper and Article Administration.
-	public var fcoRating: YoutubeContentRatingFcoRating!
+	open var fcoRating: YoutubeContentRatingFcoRating!
 	/// The video's rating from Malaysia's Film Censorship Board.
-	public var fcbmRating: YoutubeContentRatingFcbmRating!
+	open var fcbmRating: YoutubeContentRatingFcbmRating!
 	/// The video's rating from the Commission de Contrôle des Films (Belgium).
-	public var cicfRating: YoutubeContentRatingCicfRating!
+	open var cicfRating: YoutubeContentRatingCicfRating!
 	/// The video's rating from Nigeria's National Film and Video Censors Board.
-	public var nfvcbRating: YoutubeContentRatingNfvcbRating!
+	open var nfvcbRating: YoutubeContentRatingNfvcbRating!
 	/// The video's rating from Indonesia's Lembaga Sensor Film.
-	public var lsfRating: YoutubeContentRatingLsfRating!
+	open var lsfRating: YoutubeContentRatingLsfRating!
 	/// The video's rating from Luxembourg's Commission de surveillance de la classification des films (CSCF).
-	public var cscfRating: YoutubeContentRatingCscfRating!
+	open var cscfRating: YoutubeContentRatingCscfRating!
 	/// The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni (AGCOM).
-	public var agcomRating: YoutubeContentRatingAgcomRating!
+	open var agcomRating: YoutubeContentRatingAgcomRating!
 	/// The video's Australian Classification Board (ACB) or Australian Communications and Media Authority (ACMA) rating. ACMA ratings are used to classify children's television programming.
-	public var acbRating: YoutubeContentRatingAcbRating!
+	open var acbRating: YoutubeContentRatingAcbRating!
 	/// The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating.
-	public var fskRating: YoutubeContentRatingFskRating!
+	open var fskRating: YoutubeContentRatingFskRating!
 	/// The video's rating in Venezuela.
-	public var resorteviolenciaRating: YoutubeContentRatingResorteviolenciaRating!
+	open var resorteviolenciaRating: YoutubeContentRatingResorteviolenciaRating!
 	/// The video's rating in Israel.
-	public var ilfilmRating: YoutubeContentRatingIlfilmRating!
+	open var ilfilmRating: YoutubeContentRatingIlfilmRating!
 	/// The video's rating from South Africa's Film and Publication Board.
-	public var fpbRating: YoutubeContentRatingFpbRating!
+	open var fpbRating: YoutubeContentRatingFpbRating!
 	/// The video's rating from the Bulgarian National Film Center.
-	public var nfrcRating: YoutubeContentRatingNfrcRating!
+	open var nfrcRating: YoutubeContentRatingNfrcRating!
 	/// A rating that YouTube uses to identify age-restricted content.
-	public var ytRating: YoutubeContentRatingYtRating!
+	open var ytRating: YoutubeContentRatingYtRating!
 	/// The video's rating from the Kenya Film Classification Board.
-	public var kfcbRating: YoutubeContentRatingKfcbRating!
+	open var kfcbRating: YoutubeContentRatingKfcbRating!
 	/// The video's Office of Film and Literature Classification (OFLC - New Zealand) rating.
-	public var oflcRating: YoutubeContentRatingOflcRating!
+	open var oflcRating: YoutubeContentRatingOflcRating!
 	/// The video's rating in Iceland.
-	public var smaisRating: YoutubeContentRatingSmaisRating!
+	open var smaisRating: YoutubeContentRatingSmaisRating!
 	/// The video's rating from Taiwan's Ministry of Culture (文化部).
-	public var moctwRating: YoutubeContentRatingMoctwRating!
+	open var moctwRating: YoutubeContentRatingMoctwRating!
 	/// The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales - Argentina) rating.
-	public var incaaRating: YoutubeContentRatingIncaaRating!
+	open var incaaRating: YoutubeContentRatingIncaaRating!
 	/// The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
-	public var eirinRating: YoutubeContentRatingEirinRating!
+	open var eirinRating: YoutubeContentRatingEirinRating!
 	/// The video's Ministerio de Cultura (Colombia) rating.
-	public var mocRating: YoutubeContentRatingMocRating!
+	open var mocRating: YoutubeContentRatingMocRating!
 	/// The video's rating in Greece.
-	public var grfilmRating: YoutubeContentRatingGrfilmRating!
+	open var grfilmRating: YoutubeContentRatingGrfilmRating!
 	/// The video's rating from the Ministero dei Beni e delle Attività Culturali e del Turismo (Italy).
-	public var mibacRating: YoutubeContentRatingMibacRating!
+	open var mibacRating: YoutubeContentRatingMibacRating!
 	/// The video's rating from the Nacionãlais Kino centrs (National Film Centre of Latvia).
-	public var nkclvRating: YoutubeContentRatingNkclvRating!
+	open var nkclvRating: YoutubeContentRatingNkclvRating!
 	/// The video's rating in Poland.
-	public var nbcplRating: YoutubeContentRatingNbcplRating!
+	open var nbcplRating: YoutubeContentRatingNbcplRating!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -168,7 +168,7 @@ public class YoutubeContentRating: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		mtrcbRating <- map["mtrcbRating"]
 		russiaRating <- map["russiaRating"]
 		egfilmRating <- map["egfilmRating"]

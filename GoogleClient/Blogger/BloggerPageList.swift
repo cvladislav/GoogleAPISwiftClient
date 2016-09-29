@@ -9,18 +9,18 @@
 import Foundation
 import ObjectMapper
 
-public class BloggerPageList: GoogleObjectList {
+open class BloggerPageList: GoogleObjectList {
 	public typealias `Type` = BloggerPage
 	/// The list of Pages for a Blog.
-	public var items: [Type]!
+	open var items: [Type]!
 	/// Pagination token to fetch the next page, if one exists.
-	public var nextPageToken: String!
+	open var nextPageToken: String!
 	/// Etag of the response.
-	public var etag: String!
+	open var etag: String!
 	/// The kind of this entity. Always blogger#pageList
-	public var kind: String = "blogger#pageList"
+	open var kind: String = "blogger#pageList"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class BloggerPageList: GoogleObjectList {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		items <- map["items"]
 		nextPageToken <- map["nextPageToken"]
 		etag <- map["etag"]
@@ -40,12 +40,12 @@ public class BloggerPageList: GoogleObjectList {
 
 	public typealias Iterator = IndexingIterator<[Type]>
 
-	public func makeIterator() -> Iterator {
+	open func makeIterator() -> Iterator {
 		let objects = items as [Type]
 		return objects.makeIterator()
 	}
 
-	public subscript(position: Int) -> Type {
+	open subscript(position: Int) -> Type {
 		return items[position]
 	}
 }

@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The Counts subtype of the Pageviews model type for use with the Blogger API
-public class BloggerPageviewsCount: ObjectType {
+open class BloggerPageviewsCount: ObjectType {
 	/// Time range the given count applies to
-	public var timeRange: String!
+	open var timeRange: String!
 	/// Count of page views for the given time range
-	public var count: Int64!
+	open var count: Int64!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,22 +24,22 @@ public class BloggerPageviewsCount: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		timeRange <- map["timeRange"]
 		count <- map["count"]
 	}
 }
 
 /// The Pageviews model type for use with the Blogger API
-public class BloggerPageviews: GoogleObject {
+open class BloggerPageviews: GoogleObject {
 	/// Blog Id
-	public var blogId: String!
+	open var blogId: String!
 	/// The container of posts in this blog.
-	public var counts: [BloggerPageviewsCount]!
+	open var counts: [BloggerPageviewsCount]!
 	/// The kind of this entry. Always blogger#page_views
-	public var kind: String = "blogger#page_views"
+	open var kind: String = "blogger#page_views"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -47,7 +47,7 @@ public class BloggerPageviews: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		blogId <- map["blogId"]
 		counts <- map["counts"]
 		kind <- map["kind"]

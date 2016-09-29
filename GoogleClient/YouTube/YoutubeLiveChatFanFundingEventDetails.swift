@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatFanFundingEventDetails model type for use with the Youtube API
-public class YoutubeLiveChatFanFundingEventDetails: ObjectType {
+open class YoutubeLiveChatFanFundingEventDetails: ObjectType {
 	/// The currency in which the fund was made.
-	public var currency: String!
+	open var currency: String!
 	/// A rendered string that displays the fund amount and currency to the user.
-	public var amountDisplayString: String!
+	open var amountDisplayString: String!
 	/// The comment added by the user to this fan funding event.
-	public var userComment: String!
+	open var userComment: String!
 	/// The amount of the fund.
-	public var amountMicros: UInt64!
+	open var amountMicros: UInt64!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeLiveChatFanFundingEventDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		currency <- map["currency"]
 		amountDisplayString <- map["amountDisplayString"]
 		userComment <- map["userComment"]

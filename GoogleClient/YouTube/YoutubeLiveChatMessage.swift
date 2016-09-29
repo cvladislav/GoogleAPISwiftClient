@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatMessage model type for use with the Youtube API
-public class YoutubeLiveChatMessage: GoogleObject {
+open class YoutubeLiveChatMessage: GoogleObject {
 	/// The snippet object contains basic details about the message.
-	public var snippet: YoutubeLiveChatMessageSnippet!
+	open var snippet: YoutubeLiveChatMessageSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube assigns to uniquely identify the message.
-	public var id: String!
+	open var id: String!
 	/// The authorDetails object contains basic details about the user that posted this message.
-	public var authorDetails: YoutubeLiveChatMessageAuthorDetails!
+	open var authorDetails: YoutubeLiveChatMessageAuthorDetails!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatMessage".
-	public var kind: String = "youtube#liveChatMessage"
+	open var kind: String = "youtube#liveChatMessage"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeLiveChatMessage: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

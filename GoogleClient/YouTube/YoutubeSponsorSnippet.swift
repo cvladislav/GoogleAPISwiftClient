@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The SponsorSnippet model type for use with the Youtube API
-public class YoutubeSponsorSnippet: ObjectType {
+open class YoutubeSponsorSnippet: ObjectType {
 	/// The id of the channel being sponsored.
-	public var channelId: String!
+	open var channelId: String!
 	/// Details about the sponsor.
-	public var sponsorDetails: YoutubeChannelProfileDetails!
+	open var sponsorDetails: YoutubeChannelProfileDetails!
 	/// The date and time when the user became a sponsor. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-	public var sponsorSince: Date!
+	open var sponsorSince: Date!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class YoutubeSponsorSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channelId <- map["channelId"]
 		sponsorDetails <- map["sponsorDetails"]
 		sponsorSince <- (map["sponsorSince"], RFC3339Transform())

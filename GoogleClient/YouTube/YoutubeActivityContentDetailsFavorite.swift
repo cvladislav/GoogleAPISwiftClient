@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The ActivityContentDetailsFavorite model type for use with the Youtube API
-public class YoutubeActivityContentDetailsFavorite: ObjectType {
+open class YoutubeActivityContentDetailsFavorite: ObjectType {
 	/// The resourceId object contains information that identifies the resource that was marked as a favorite.
-	public var resourceId: YoutubeResourceId!
+	open var resourceId: YoutubeResourceId!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeActivityContentDetailsFavorite: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resourceId <- map["resourceId"]
 	}
 }

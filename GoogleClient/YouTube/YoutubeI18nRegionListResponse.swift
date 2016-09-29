@@ -9,20 +9,20 @@
 import Foundation
 import ObjectMapper
 
-public class YoutubeI18nRegionListResponse: GoogleObjectList {
+open class YoutubeI18nRegionListResponse: GoogleObjectList {
 	public typealias `Type` = YoutubeI18nRegion
 	/// A list of regions where YouTube is available. In this map, the i18n region ID is the map key, and its value is the corresponding i18nRegion resource.
-	public var items: [Type]!
+	open var items: [Type]!
 	/// The visitorId identifies the visitor.
-	public var visitorId: String!
+	open var visitorId: String!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// Serialized EventId of the request which produced this response.
-	public var eventId: String!
+	open var eventId: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#i18nRegionListResponse".
-	public var kind: String = "youtube#i18nRegionListResponse"
+	open var kind: String = "youtube#i18nRegionListResponse"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeI18nRegionListResponse: GoogleObjectList {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		items <- map["items"]
 		visitorId <- map["visitorId"]
 		etag <- map["etag"]
@@ -43,12 +43,12 @@ public class YoutubeI18nRegionListResponse: GoogleObjectList {
 
 	public typealias Iterator = IndexingIterator<[Type]>
 
-	public func makeIterator() -> Iterator {
+	open func makeIterator() -> Iterator {
 		let objects = items as [Type]
 		return objects.makeIterator()
 	}
 
-	public subscript(position: Int) -> Type {
+	open subscript(position: Int) -> Type {
 		return items[position]
 	}
 }

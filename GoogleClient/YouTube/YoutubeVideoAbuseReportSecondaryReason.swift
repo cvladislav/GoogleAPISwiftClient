@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The VideoAbuseReportSecondaryReason model type for use with the Youtube API
-public class YoutubeVideoAbuseReportSecondaryReason: ObjectType {
+open class YoutubeVideoAbuseReportSecondaryReason: ObjectType {
 	/// The ID of this abuse report secondary reason.
-	public var id: String!
+	open var id: String!
 	/// The localized label for this abuse report secondary reason.
-	public var label: String!
+	open var label: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeVideoAbuseReportSecondaryReason: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		id <- map["id"]
 		label <- map["label"]
 	}

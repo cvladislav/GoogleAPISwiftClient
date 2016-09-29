@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The Thumbnail model type for use with the Youtube API
-public class YoutubeThumbnail: ObjectType {
+open class YoutubeThumbnail: ObjectType {
 	/// (Optional) Width of the thumbnail image.
-	public var width: UInt!
+	open var width: UInt!
 	/// (Optional) Height of the thumbnail image.
-	public var height: UInt!
+	open var height: UInt!
 	/// The thumbnail image's URL.
-	public var url: String!
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class YoutubeThumbnail: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		width <- map["width"]
 		height <- map["height"]
 		url <- map["url"]

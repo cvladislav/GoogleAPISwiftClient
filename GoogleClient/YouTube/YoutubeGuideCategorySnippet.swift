@@ -10,12 +10,12 @@ import Foundation
 import ObjectMapper
 
 /// The GuideCategorySnippet model type for use with the Youtube API
-public class YoutubeGuideCategorySnippet: ObjectType {
-	public var channelId: String = "UCBR8-60-B28hp2BmDPdntcQ"
+open class YoutubeGuideCategorySnippet: ObjectType {
+	open var channelId: String = "UCBR8-60-B28hp2BmDPdntcQ"
 	/// Description of the guide category.
-	public var title: String!
+	open var title: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -23,7 +23,7 @@ public class YoutubeGuideCategorySnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channelId <- map["channelId"]
 		title <- map["title"]
 	}

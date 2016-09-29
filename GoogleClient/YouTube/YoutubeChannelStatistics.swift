@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelStatistics model type for use with the Youtube API
-public class YoutubeChannelStatistics: ObjectType {
+open class YoutubeChannelStatistics: ObjectType {
 	/// The number of subscribers that the channel has.
-	public var subscriberCount: UInt64!
+	open var subscriberCount: UInt64!
 	/// The number of times the channel has been viewed.
-	public var viewCount: UInt64!
+	open var viewCount: UInt64!
 	/// Whether or not the number of subscribers is shown for this user.
-	public var hiddenSubscriberCount: Bool!
+	open var hiddenSubscriberCount: Bool!
 	/// The number of videos uploaded to the channel.
-	public var videoCount: UInt64!
+	open var videoCount: UInt64!
 	/// The number of comments for the channel.
-	public var commentCount: UInt64!
+	open var commentCount: UInt64!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeChannelStatistics: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		subscriberCount <- map["subscriberCount"]
 		viewCount <- map["viewCount"]
 		hiddenSubscriberCount <- map["hiddenSubscriberCount"]

@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The I18nLanguageSnippet model type for use with the Youtube API
-public class YoutubeI18nLanguageSnippet: ObjectType {
+open class YoutubeI18nLanguageSnippet: ObjectType {
 	/// A short BCP-47 code that uniquely identifies a language.
-	public var hl: String!
+	open var hl: String!
 	/// The human-readable name of the language in the language itself.
-	public var name: String!
+	open var name: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeI18nLanguageSnippet: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		hl <- map["hl"]
 		name <- map["name"]
 	}

@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The I18nLanguage model type for use with the Youtube API
-public class YoutubeI18nLanguage: GoogleObject {
+open class YoutubeI18nLanguage: GoogleObject {
 	/// The snippet object contains basic details about the i18n language, such as language code and human-readable name.
-	public var snippet: YoutubeI18nLanguageSnippet!
+	open var snippet: YoutubeI18nLanguageSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube uses to uniquely identify the i18n language.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#i18nLanguage".
-	public var kind: String = "youtube#i18nLanguage"
+	open var kind: String = "youtube#i18nLanguage"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeI18nLanguage: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		snippet <- map["snippet"]
 		etag <- map["etag"]
 		id <- map["id"]

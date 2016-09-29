@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The ActivityContentDetailsSubscription model type for use with the Youtube API
-public class YoutubeActivityContentDetailsSubscription: ObjectType {
+open class YoutubeActivityContentDetailsSubscription: ObjectType {
 	/// The resourceId object contains information that identifies the resource that the user subscribed to.
-	public var resourceId: YoutubeResourceId!
+	open var resourceId: YoutubeResourceId!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeActivityContentDetailsSubscription: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resourceId <- map["resourceId"]
 	}
 }

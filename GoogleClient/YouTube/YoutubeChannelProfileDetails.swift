@@ -10,17 +10,17 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelProfileDetails model type for use with the Youtube API
-public class YoutubeChannelProfileDetails: ObjectType {
+open class YoutubeChannelProfileDetails: ObjectType {
 	/// The channel's URL.
-	public var channelUrl: String!
+	open var channelUrl: String!
 	/// The channels's avatar URL.
-	public var profileImageUrl: String!
+	open var profileImageUrl: String!
 	/// The YouTube channel ID.
-	public var channelId: String!
+	open var channelId: String!
 	/// The channel's display name.
-	public var displayName: String!
+	open var displayName: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -28,7 +28,7 @@ public class YoutubeChannelProfileDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		channelUrl <- map["channelUrl"]
 		profileImageUrl <- map["profileImageUrl"]
 		channelId <- map["channelId"]

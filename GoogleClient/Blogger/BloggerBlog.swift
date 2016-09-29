@@ -10,35 +10,35 @@ import Foundation
 import ObjectMapper
 
 /// The Blog model type for use with the Blogger API
-public class BloggerBlog: GoogleObject {
+open class BloggerBlog: GoogleObject {
 	/// The locale this Blog is set to.
-	public var locale: BloggerBlogLocale!
+	open var locale: BloggerBlogLocale!
 	/// The API REST URL to fetch this resource from.
-	public var selfLink: String!
+	open var selfLink: String!
 	/// RFC 3339 date-time when this blog was published.
-	public var published: Date!
+	open var published: Date!
 	/// The JSON custom meta-data for the Blog
-	public var customMetaData: String!
+	open var customMetaData: String!
 	/// The kind of this entry. Always blogger#blog
-	public var kind: String = "blogger#blog"
+	open var kind: String = "blogger#blog"
 	/// The description of this blog. This is displayed underneath the title.
-	public var description: String!
+	open var description: String!
 	/// RFC 3339 date-time when this blog was last updated.
-	public var updated: Date!
+	open var updated: Date!
 	/// The name of this blog. This is displayed as the title.
-	public var name: String!
+	open var name: String!
 	/// The identifier for this resource.
-	public var id: String!
+	open var id: String!
 	/// The container of posts in this blog.
-	public var posts: BloggerBlogPosts!
+	open var posts: BloggerBlogPosts!
 	/// The container of pages in this blog.
-	public var pages: BloggerBlogPages!
+	open var pages: BloggerBlogPages!
 	/// The URL where this blog is published.
-	public var url: String!
+	open var url: String!
 	/// The status of the blog.
-	public var status: String!
+	open var status: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -46,7 +46,7 @@ public class BloggerBlog: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		locale <- map["locale"]
 		selfLink <- map["selfLink"]
 		published <- (map["published"], RFC3339Transform())
@@ -64,15 +64,15 @@ public class BloggerBlog: GoogleObject {
 }
 
 /// The Locale subtype of the Blog model type for use with the Blogger API
-public class BloggerBlogLocale: ObjectType {
+open class BloggerBlogLocale: ObjectType {
 	/// The country this blog's locale is set to.
-	public var country: String!
+	open var country: String!
 	/// The language this blog is authored in.
-	public var language: String!
+	open var language: String!
 	/// The language variant this blog is authored in.
-	public var variant: String!
+	open var variant: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -80,7 +80,7 @@ public class BloggerBlogLocale: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		country <- map["country"]
 		language <- map["language"]
 		variant <- map["variant"]
@@ -88,15 +88,15 @@ public class BloggerBlogLocale: ObjectType {
 }
 
 /// The Posts subtype of the Blog model type for use with the Blogger API
-public class BloggerBlogPosts: ObjectType {
+open class BloggerBlogPosts: ObjectType {
 	/// The List of Posts for this Blog.
-	public var items: [BloggerPost]!
+	open var items: [BloggerPost]!
 	/// The URL of the container for posts in this blog.
-	public var selfLink: String!
+	open var selfLink: String!
 	/// The count of posts in this blog.
-	public var totalItems: Int!
+	open var totalItems: Int!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -104,7 +104,7 @@ public class BloggerBlogPosts: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		items <- map["items"]
 		selfLink <- map["selfLink"]
 		totalItems <- map["totalItems"]
@@ -112,13 +112,13 @@ public class BloggerBlogPosts: ObjectType {
 }
 
 /// The Pages subtype of the Blog model type for use with the Blogger API
-public class BloggerBlogPages: ObjectType {
+open class BloggerBlogPages: ObjectType {
 	/// The URL of the container for pages in this blog.
-	public var selfLink: String!
+	open var selfLink: String!
 	/// The count of pages in this blog.
-	public var totalItems: Int!
+	open var totalItems: Int!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -126,7 +126,7 @@ public class BloggerBlogPages: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		selfLink <- map["selfLink"]
 		totalItems <- map["totalItems"]
 	}

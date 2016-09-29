@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelBannerResource model type for use with the Youtube API
-public class YoutubeChannelBannerResource: GoogleObject {
+open class YoutubeChannelBannerResource: GoogleObject {
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#channelBannerResource".
-	public var kind: String = "youtube#channelBannerResource"
+	open var kind: String = "youtube#channelBannerResource"
 	/// The URL of this banner image.
-	public var url: String!
+	open var url: String!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class YoutubeChannelBannerResource: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		kind <- map["kind"]
 		url <- map["url"]
 		etag <- map["etag"]

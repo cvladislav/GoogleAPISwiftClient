@@ -9,17 +9,17 @@
 import Foundation
 import ObjectMapper
 
-public class DiscoveryDirectoryList: GoogleObjectList {
-    public var kind: String = "discovery#directoryList"
-    public var discoveryVersion: String!
+open class DiscoveryDirectoryList: GoogleObjectList {
+    open var kind: String = "discovery#directoryList"
+    open var discoveryVersion: String!
     public typealias `Type` = DiscoveryDirectoryItem
-    public var items: [Type]!
+    open var items: [Type]!
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
         
     }
     
-    public func mapping(_ map: Map) {
+    open func mapping(map: Map) {
         kind <- map["kind"]
         discoveryVersion <- map["discoveryVersion"]
         items <- map["items"]
@@ -31,35 +31,35 @@ public class DiscoveryDirectoryList: GoogleObjectList {
     
     public typealias Iterator = IndexingIterator<[Type]>
     
-    public func makeIterator() -> Iterator {
+    open func makeIterator() -> Iterator {
         let objects = items as [Type]
         return objects.makeIterator()
     }
     
-    public subscript(position: Int) -> Type {
+    open subscript(position: Int) -> Type {
         return items[position]
     }
 }
 
-public class DiscoveryDirectoryItem: GoogleObject {
-    public var kind: String = "discovery#directoryList"
-    public var identifier: String! // id
-    public var name: String!
-    public var version: String!
-    public var title: String!
-    public var APIDescription: String! // description
-    public var icons: DiscoveryAPIIcon!
-    public var documentationLink: URL!
-    public var discoveryRestURL: URL! // discoveryRestUrl
-    public var discoveryLink: String!
-    public var labels: [String]!
-    public var preferred: Bool!
+open class DiscoveryDirectoryItem: GoogleObject {
+    open var kind: String = "discovery#directoryList"
+    open var identifier: String! // id
+    open var name: String!
+    open var version: String!
+    open var title: String!
+    open var APIDescription: String! // description
+    open var icons: DiscoveryAPIIcon!
+    open var documentationLink: URL!
+    open var discoveryRestURL: URL! // discoveryRestUrl
+    open var discoveryLink: String!
+    open var labels: [String]!
+    open var preferred: Bool!
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
         
     }
     
-    public func mapping(_ map: Map) {
+    open func mapping(map: Map) {
         kind <- map["kind"]
         identifier <- map["id"]
         name <- map["name"]

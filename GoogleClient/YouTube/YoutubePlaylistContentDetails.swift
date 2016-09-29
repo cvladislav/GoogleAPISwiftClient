@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The PlaylistContentDetails model type for use with the Youtube API
-public class YoutubePlaylistContentDetails: ObjectType {
+open class YoutubePlaylistContentDetails: ObjectType {
 	/// The number of videos in the playlist.
-	public var itemCount: UInt!
+	open var itemCount: UInt!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubePlaylistContentDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		itemCount <- map["itemCount"]
 	}
 }

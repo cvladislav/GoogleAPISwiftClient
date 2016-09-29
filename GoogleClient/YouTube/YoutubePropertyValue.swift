@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The PropertyValue model type for use with the Youtube API
-public class YoutubePropertyValue: ObjectType {
+open class YoutubePropertyValue: ObjectType {
 	/// The property's value.
-	public var value: String!
+	open var value: String!
 	/// A property.
-	public var property: String!
+	open var property: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubePropertyValue: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		value <- map["value"]
 		property <- map["property"]
 	}

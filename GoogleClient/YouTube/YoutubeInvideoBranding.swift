@@ -10,14 +10,14 @@ import Foundation
 import ObjectMapper
 
 /// The InvideoBranding model type for use with the Youtube API
-public class YoutubeInvideoBranding: ObjectType {
-	public var imageBytes: URL!
-	public var timing: YoutubeInvideoTiming!
-	public var imageUrl: String!
-	public var position: YoutubeInvideoPosition!
-	public var targetChannelId: String!
+open class YoutubeInvideoBranding: ObjectType {
+	open var imageBytes: URL!
+	open var timing: YoutubeInvideoTiming!
+	open var imageUrl: String!
+	open var position: YoutubeInvideoPosition!
+	open var targetChannelId: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -25,7 +25,7 @@ public class YoutubeInvideoBranding: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		imageBytes <- (map["imageBytes"], URLTransform())
 		timing <- map["timing"]
 		imageUrl <- map["imageUrl"]

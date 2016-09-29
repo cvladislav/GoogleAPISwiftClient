@@ -1,9 +1,9 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target 'GoogleClient' do
-  pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire', :branch => 'swift3'
-  pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper', :branch => 'swift-3'
+  pod 'Alamofire', '~> 4.0.1'
+  pod 'ObjectMapper'
 end
 
 target 'GoogleClientTests' do

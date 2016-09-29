@@ -14,7 +14,7 @@ protocol JSONStringConvertible {
 
 extension Bool: JSONStringConvertible {
     func toJSONString() -> String {
-        if boolValue {
+        if self {
             return "true"
         } else {
             return "false"

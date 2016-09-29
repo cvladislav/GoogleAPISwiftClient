@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 
 /// The Activity model type for use with the Youtube API
-public class YoutubeActivity: GoogleObject {
+open class YoutubeActivity: GoogleObject {
 	/// The contentDetails object contains information about the content associated with the activity. For example, if the snippet.type value is videoRated, then the contentDetails object's content identifies the rated video.
-	public var contentDetails: YoutubeActivityContentDetails!
+	open var contentDetails: YoutubeActivityContentDetails!
 	/// The snippet object contains basic details about the activity, including the activity's type and group ID.
-	public var snippet: YoutubeActivitySnippet!
+	open var snippet: YoutubeActivitySnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube uses to uniquely identify the activity.
-	public var id: String!
+	open var id: String!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#activity".
-	public var kind: String = "youtube#activity"
+	open var kind: String = "youtube#activity"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -30,7 +30,7 @@ public class YoutubeActivity: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		contentDetails <- map["contentDetails"]
 		snippet <- map["snippet"]
 		etag <- map["etag"]

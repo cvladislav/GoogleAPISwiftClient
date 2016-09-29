@@ -10,21 +10,21 @@ import Foundation
 import ObjectMapper
 
 /// The PlaylistItem model type for use with the Youtube API
-public class YoutubePlaylistItem: GoogleObject {
+open class YoutubePlaylistItem: GoogleObject {
 	/// The contentDetails object is included in the resource if the included item is a YouTube video. The object contains additional information about the video.
-	public var contentDetails: YoutubePlaylistItemContentDetails!
+	open var contentDetails: YoutubePlaylistItemContentDetails!
 	/// The snippet object contains basic details about the playlist item, such as its title and position in the playlist.
-	public var snippet: YoutubePlaylistItemSnippet!
+	open var snippet: YoutubePlaylistItemSnippet!
 	/// Etag of this resource.
-	public var etag: String!
+	open var etag: String!
 	/// The ID that YouTube uses to uniquely identify the playlist item.
-	public var id: String!
+	open var id: String!
 	/// The status object contains information about the playlist item's privacy status.
-	public var status: YoutubePlaylistItemStatus!
+	open var status: YoutubePlaylistItemStatus!
 	/// Identifies what kind of resource this is. Value: the fixed string "youtube#playlistItem".
-	public var kind: String = "youtube#playlistItem"
+	open var kind: String = "youtube#playlistItem"
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -32,7 +32,7 @@ public class YoutubePlaylistItem: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		contentDetails <- map["contentDetails"]
 		snippet <- map["snippet"]
 		etag <- map["etag"]

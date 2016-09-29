@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The ChannelLocalization model type for use with the Youtube API
-public class YoutubeChannelLocalization: ObjectType {
+open class YoutubeChannelLocalization: ObjectType {
 	/// The localized strings for channel's title.
-	public var title: String!
+	open var title: String!
 	/// The localized strings for channel's description.
-	public var description: String!
+	open var description: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeChannelLocalization: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		title <- map["title"]
 		description <- map["description"]
 	}

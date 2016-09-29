@@ -22,11 +22,11 @@ public enum YoutubeVideoRatingRating: String {
 }
 
 /// The VideoRating model type for use with the Youtube API
-public class YoutubeVideoRating: ObjectType {
-	public var rating: YoutubeVideoRatingRating!
-	public var videoId: String!
+open class YoutubeVideoRating: ObjectType {
+	open var rating: YoutubeVideoRatingRating!
+	open var videoId: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -34,7 +34,7 @@ public class YoutubeVideoRating: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		rating <- map["rating"]
 		videoId <- map["videoId"]
 	}

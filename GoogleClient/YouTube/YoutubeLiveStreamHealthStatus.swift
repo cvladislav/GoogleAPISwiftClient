@@ -24,15 +24,15 @@ public enum YoutubeLiveStreamHealthStatusStatus: String {
 }
 
 /// The LiveStreamHealthStatus model type for use with the Youtube API
-public class YoutubeLiveStreamHealthStatus: ObjectType {
+open class YoutubeLiveStreamHealthStatus: ObjectType {
 	/// The status code of this stream
-	public var status: YoutubeLiveStreamHealthStatusStatus!
+	open var status: YoutubeLiveStreamHealthStatusStatus!
 	/// The configurations issues on this stream
-	public var configurationIssues: [YoutubeLiveStreamConfigurationIssue]!
+	open var configurationIssues: [YoutubeLiveStreamConfigurationIssue]!
 	/// The last time this status was updated (in seconds)
-	public var lastUpdateTimeSeconds: UInt64!
+	open var lastUpdateTimeSeconds: UInt64!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -40,7 +40,7 @@ public class YoutubeLiveStreamHealthStatus: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		status <- map["status"]
 		configurationIssues <- map["configurationIssues"]
 		lastUpdateTimeSeconds <- map["lastUpdateTimeSeconds"]

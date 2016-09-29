@@ -158,47 +158,47 @@ public enum BloggerCommentsStatus: String {
 }
 
 /// API for access to the data within Blogger.
-public class Blogger: GoogleService {
+open class Blogger: GoogleService {
 	var apiNameInURL: String = "blogger"
 	var apiVersionString: String = "v3"
 
-	public let fetcher: GoogleServiceFetcher = GoogleServiceFetcher()
+	open let fetcher: GoogleServiceFetcher = GoogleServiceFetcher()
 
 	public required init() {
 
 	}
 
 	/// IP address of the site where the request originates. Use this if you want to enforce per-user limits.
-	public var userIp: String!
+	open var userIp: String!
 	/// Returns response with indentations and line breaks.
-	public var prettyPrint: Bool = true
+	open var prettyPrint: Bool = true
 	/// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.
-	public var quotaUserId: String!
+	open var quotaUserId: String!
 	/// Selector specifying which fields to include in a partial response.
-	public var fields: String!
+	open var fields: String!
 	/// Data format for the response.
-	public var alt: BloggerAlt = .JSON
+	open var alt: BloggerAlt = .JSON
 
 	/// Whether the body content of posts is included. Default is false.
-	public var fetchBodies: Bool = false
-	public var status: BloggerPostUserInfosStatus!
+	open var fetchBodies: Bool = false
+	open var status: BloggerPostUserInfosStatus!
 	/// Access level with which to view the returned result. Note that some fields require elevated access.
-	public var view: BloggerPostUserInfosView!
+	open var view: BloggerPostUserInfosView!
 	/// Latest post date to fetch, a date-time with RFC 3339 formatting.
-	public var endDate: Date!
+	open var endDate: Date!
 	/// Comma-separated list of labels to search for.
-	public var labels: String!
+	open var labels: String!
 	/// Continuation token if the request is paged.
-	public var pageToken: String!
+	open var pageToken: String!
 	/// Sort order applied to search results. Default is published.
-	public var orderBy: BloggerPostUserInfosOrderBy = .Published
+	open var orderBy: BloggerPostUserInfosOrderBy = .Published
 	/// Maximum number of posts to fetch.
-	public var maxResults: UInt!
+	open var maxResults: UInt!
 	/// Earliest post date to fetch, a date-time with RFC 3339 formatting.
-	public var startDate: Date!
+	open var startDate: Date!
 
 	/// Retrieves a list of post and post user info pairs, possibly filtered. The post user info contains per-user information about the post, such as access rights, specific to the user.
-	public func listPostUserInfos(forUserId userId: String, blogId: String, completionHandler: (postUserInfosList: BloggerPostUserInfosList?, error: NSError?) -> ()) {
+	open func listPostUserInfos(forUserId userId: String, blogId: String, completionHandler: @escaping (_ postUserInfosList: BloggerPostUserInfosList?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(fetchBodies.toJSONString(), forKey: "fetchBodies")
 		if let status = status {
@@ -225,60 +225,60 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "users/\(userId)/blogs/\(blogId)/posts", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(postUserInfosList: nil, error: error)
-			} else if JSON != nil {
-				let postUserInfosList = Mapper<BloggerPostUserInfosList>().map(JSON)
-				completionHandler(postUserInfosList: postUserInfosList, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let postUserInfosList = Mapper<BloggerPostUserInfosList>().map(JSON: JSON!)
+				completionHandler(postUserInfosList, nil)
 			}
 		}
 	}
 
 	/// Maximum number of comments to pull back on a post.
-	public var maxComments: UInt!
+	open var maxComments: UInt!
 
 	/// Gets one post and user info pair, by post ID and user ID. The post user info contains per-user information about the post, such as access rights, specific to the user.
-	public func getPostUserInfo(forUserId userId: String, blogId: String, postId: String, completionHandler: (postUserInfo: BloggerPostUserInfo?, error: NSError?) -> ()) {
+	open func getPostUserInfo(forUserId userId: String, blogId: String, postId: String, completionHandler: @escaping (_ postUserInfo: BloggerPostUserInfo?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let maxComments = maxComments {
 			queryParams.updateValue(maxComments.toJSONString(), forKey: "maxComments")
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "users/\(userId)/blogs/\(blogId)/posts/\(postId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(postUserInfo: nil, error: error)
-			} else if JSON != nil {
-				let postUserInfo = Mapper<BloggerPostUserInfo>().map(JSON)
-				completionHandler(postUserInfo: postUserInfo, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+				let postUserInfo = Mapper<BloggerPostUserInfo>().map(JSON: json)
+				completionHandler(postUserInfo, nil)
 			}
 		}
 	}
 
-	public var range: BloggerPageViewsRange!
+	open var range: BloggerPageViewsRange!
 
 	/// Retrieve pageview stats for a Blog.
-	public func getPageViews(forBlogWithId blogId: String, completionHandler: (pageviews: BloggerPageviews?, error: NSError?) -> ()) {
+	open func getPageViews(forBlogWithId blogId: String, completionHandler: @escaping (_ pageviews: BloggerPageviews?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let range = range {
 			queryParams.updateValue(range.rawValue, forKey: "range")
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pageviews", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(pageviews: nil, error: error)
-			} else if JSON != nil {
-				let pageviews = Mapper<BloggerPageviews>().map(JSON)
-				completionHandler(pageviews: pageviews, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+				let pageviews = Mapper<BloggerPageviews>().map(JSON: json)
+				completionHandler(pageviews, nil)
 			}
 		}
 	}
 
 	/// Whether to create the post as a draft (default: false).
-	public var isDraft: Bool!
+	open var isDraft: Bool!
 	/// Whether the body content of the post is included with the result (default: true).
-	public var fetchBody: Bool = true
+	open var fetchBody: Bool = true
 	/// Whether image URL metadata for each post is included in the returned result (default: false).
-	public var fetchImages: Bool!
+	open var fetchImages: Bool!
 
 	/// Add a post.
-	public func insertPost(_ post: BloggerPost, toBlogWithId blogId: String, completionHandler: (post: BloggerPost?, error: NSError?) -> ()) {
+	open func insertPost(_ post: BloggerPost, toBlogWithId blogId: String, completionHandler: @escaping (_ post: BloggerPost?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let isDraft = isDraft {
 			queryParams.updateValue(isDraft.toJSONString(), forKey: "isDraft")
@@ -287,54 +287,59 @@ public class Blogger: GoogleService {
 		if let fetchImages = fetchImages {
 			queryParams.updateValue(fetchImages.toJSONString(), forKey: "fetchImages")
 		}
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts", queryParams: queryParams, postBody: Mapper<BloggerPost>().toJSON(post)) { (JSON, error) -> () in
+
+		fetcher.performRequest(.post,
+		                       serviceName: apiNameInURL,
+		                       apiVersion: apiVersionString,
+		                       endpoint: "blogs/\(blogId)/posts", queryParams: queryParams,
+		                       postBody: Mapper<BloggerPost>().toJSON(post) as [String: AnyObject] ) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(post: nil, error: error)
-			} else if JSON != nil {
-				let post = Mapper<BloggerPost>().map(JSON)
-				completionHandler(post: post, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let post = Mapper<BloggerPost>().map(JSON: json)
+				completionHandler(post, nil)
 			}
 		}
 	}
 
 	/// Optional date and time to schedule the publishing of the Blog. If no publishDate parameter is given, the post is either published at the a previously saved schedule date (if present), or the current time. If a future date is given, the post will be scheduled to be published.
-	public var publishDate: Date!
+	open var publishDate: Date!
 
 	/// Publishes a draft post, optionally at the specific time of the given publishDate parameter.
-	public func publishPost(withId postId: String, toBlogWithId blogId: String, completionHandler: (post: BloggerPost?, error: NSError?) -> ()) {
+	open func publishPost(withId postId: String, toBlogWithId blogId: String, completionHandler: @escaping (_ post: BloggerPost?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let publishDate = publishDate {
 			queryParams.updateValue(publishDate.toJSONString(), forKey: "publishDate")
 		}
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/publish", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.post, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/publish", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(post: nil, error: error)
-			} else if JSON != nil {
-				let post = Mapper<BloggerPost>().map(JSON)
-				completionHandler(post: post, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let post = Mapper<BloggerPost>().map(JSON: json)
+				completionHandler(post, nil)
 			}
 		}
 	}
 
 	/// Delete a post by ID.
-	public func deletePost(withId postId: String, fromBlogWithId blogId: String, completionHandler: (success: Bool, error: NSError?) -> ()) {
+	open func deletePost(withId postId: String, fromBlogWithId blogId: String, completionHandler: @escaping (_ success: Bool, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.DELETE, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.delete, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(success: false, error: error)
+				completionHandler(false, error)
 			} else {
-				completionHandler(success: true, error: nil)
+				completionHandler(true, nil)
 			}
 		}
 	}
 
 	/// Whether a publish action should be performed when the post is updated (default: false).
-	public var publish: Bool!
+	open var publish: Bool!
 	/// Whether a revert action should be performed when the post is updated (default: false).
-	public var revert: Bool!
+	open var revert: Bool!
 
 	/// Update a post. This method supports patch semantics.
-	public func patchPost(_ post: BloggerPost, forPostID postId: String, blogId: String, completionHandler: (post: BloggerPost?, error: NSError?) -> ()) {
+	open func patchPost(_ post: BloggerPost, forPostID postId: String, blogId: String, completionHandler: @escaping (_ post: BloggerPost?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let publish = publish {
 			queryParams.updateValue(publish.toJSONString(), forKey: "publish")
@@ -349,18 +354,23 @@ public class Blogger: GoogleService {
 		if let revert = revert {
 			queryParams.updateValue(revert.toJSONString(), forKey: "revert")
 		}
-		fetcher.performRequest(.PATCH, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)", queryParams: queryParams, postBody: Mapper<BloggerPost>().toJSON(post)) { (JSON, error) -> () in
+		fetcher.performRequest(.patch,
+		                       serviceName: apiNameInURL,
+		                       apiVersion: apiVersionString,
+		                       endpoint: "blogs/\(blogId)/posts/\(postId)",
+                               queryParams: queryParams,
+                               postBody: Mapper<BloggerPost>().toJSON(post) as [String: AnyObject] ) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(post: nil, error: error)
-			} else if JSON != nil {
-				let post = Mapper<BloggerPost>().map(JSON)
-				completionHandler(post: post, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let post = Mapper<BloggerPost>().map(JSON: json)
+				completionHandler(post, nil)
 			}
 		}
 	}
 
 	/// Retrieve a Post by Path.
-	public func getPost(byPath path: String, blogId: String, completionHandler: (post: BloggerPost?, error: NSError?) -> ()) {
+	open func getPost(byPath path: String, blogId: String, completionHandler: @escaping (_ post: BloggerPost?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(path, forKey: "path")
 		if let view = view {
@@ -371,16 +381,16 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/bypath", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(post: nil, error: error)
-			} else if JSON != nil {
-				let post = Mapper<BloggerPost>().map(JSON)
-				completionHandler(post: post, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let post = Mapper<BloggerPost>().map(JSON: json)
+				completionHandler(post, nil)
 			}
 		}
 	}
 
 	/// Update a post.
-	public func updatePost(_ post: BloggerPost, withPostId postId: String, blogId: String, completionHandler: (post: BloggerPost?, error: NSError?) -> ()) {
+	open func updatePost(_ post: BloggerPost, withPostId postId: String, blogId: String, completionHandler: @escaping (_ post: BloggerPost?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let publish = publish {
 			queryParams.updateValue(publish.toJSONString(), forKey: "publish")
@@ -395,18 +405,23 @@ public class Blogger: GoogleService {
 		if let revert = revert {
 			queryParams.updateValue(revert.toJSONString(), forKey: "revert")
 		}
-		fetcher.performRequest(.PUT, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)", queryParams: queryParams, postBody: Mapper<BloggerPost>().toJSON(post)) { (JSON, error) -> () in
+		fetcher.performRequest(.put,
+		                       serviceName: apiNameInURL,
+		                       apiVersion: apiVersionString,
+		                       endpoint: "blogs/\(blogId)/posts/\(postId)",
+                               queryParams: queryParams,
+                               postBody: Mapper<BloggerPost>().toJSON(post) as [String: AnyObject] ) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(post: nil, error: error)
-			} else if JSON != nil {
-				let post = Mapper<BloggerPost>().map(JSON)
-				completionHandler(post: post, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let post = Mapper<BloggerPost>().map(JSON: json)
+				completionHandler(post, nil)
 			}
 		}
 	}
 
 	/// Get a post by ID.
-	public func getPost(withId postId: String, blogId: String, completionHandler: (post: BloggerPost?, error: NSError?) -> ()) {
+	open func getPost(withId postId: String, blogId: String, completionHandler: @escaping (_ post: BloggerPost?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(fetchBody.toJSONString(), forKey: "fetchBody")
 		if let fetchImages = fetchImages {
@@ -420,45 +435,49 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(post: nil, error: error)
-			} else if JSON != nil {
-				let post = Mapper<BloggerPost>().map(JSON)
-				completionHandler(post: post, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let post = Mapper<BloggerPost>().map(JSON: json)
+				completionHandler(post, nil)
 			}
 		}
 	}
 
 	/// Revert a published or scheduled post to draft state.
-	public func revertPost(withId postId: String, blogId: String, completionHandler: (post: BloggerPost?, error: NSError?) -> ()) {
+	open func revertPost(withId postId: String, blogId: String, completionHandler: @escaping (_ post: BloggerPost?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/revert", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.post,
+		                       serviceName: apiNameInURL,
+		                       apiVersion: apiVersionString,
+		                       endpoint: "blogs/\(blogId)/posts/\(postId)/revert",
+                               queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(post: nil, error: error)
-			} else if JSON != nil {
-				let post = Mapper<BloggerPost>().map(JSON)
-				completionHandler(post: post, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let post = Mapper<BloggerPost>().map(JSON: json)
+				completionHandler(post, nil)
 			}
 		}
 	}
 
 	/// Search for a post.
-	public func searchPosts(query q: String, blogId: String, completionHandler: (postList: BloggerPostList?, error: NSError?) -> ()) {
+	open func searchPosts(query q: String, blogId: String, completionHandler: @escaping (_ postList: BloggerPostList?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(fetchBodies.toJSONString(), forKey: "fetchBodies")
 		queryParams.updateValue(orderBy.rawValue, forKey: "orderBy")
 		queryParams.updateValue(q, forKey: "q")
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/search", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(postList: nil, error: error)
-			} else if JSON != nil {
-				let postList = Mapper<BloggerPostList>().map(JSON)
-				completionHandler(postList: postList, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let postList = Mapper<BloggerPostList>().map(JSON: json)
+				completionHandler(postList, nil)
 			}
 		}
 	}
 
 	/// Retrieves a list of posts, possibly filtered.
-	public func listPosts(blogId: String, completionHandler: (postList: BloggerPostList?, error: NSError?) -> ()) {
+	open func listPosts(_ blogId: String, completionHandler: @escaping (_ postList: BloggerPostList?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(fetchBodies.toJSONString(), forKey: "fetchBodies")
 		if let status = status {
@@ -488,83 +507,83 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(postList: nil, error: error)
-			} else if JSON != nil {
-				let postList = Mapper<BloggerPostList>().map(JSON)
-				completionHandler(postList: postList, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let postList = Mapper<BloggerPostList>().map(JSON: json)
+				completionHandler(postList, nil)
 			}
 		}
 	}
 
 	/// Gets one user by ID.
-	public func getUser(withId userId: String, completionHandler: (user: BloggerUser?, error: NSError?) -> ()) {
+	open func getUser(withId userId: String, completionHandler: @escaping (_ user: BloggerUser?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "users/\(userId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(user: nil, error: error)
-			} else if JSON != nil {
-				let user = Mapper<BloggerUser>().map(JSON)
-				completionHandler(user: user, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let user = Mapper<BloggerUser>().map(JSON: json)
+				completionHandler(user, nil)
 			}
 		}
 	}
 
 	/// Marks a comment as spam.
-	public func markCommentAsSpam(withId commentId: String, inPostWithId postId: String, blogId: String, completionHandler: (comment: BloggerComment?, error: NSError?) -> ()) {
+	open func markCommentAsSpam(withId commentId: String, inPostWithId postId: String, blogId: String, completionHandler: @escaping (_ comment: BloggerComment?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)/spam", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.post, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)/spam", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(comment: nil, error: error)
-			} else if JSON != nil {
-				let comment = Mapper<BloggerComment>().map(JSON)
-				completionHandler(comment: comment, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let comment = Mapper<BloggerComment>().map(JSON: json)
+				completionHandler(comment, nil)
 			}
 		}
 	}
 
 	/// Removes the content of a comment.
-	public func removeContentFromComment(withId commentId: String, inPostWithId postId: String, blogId: String, completionHandler: (comment: BloggerComment?, error: NSError?) -> ()) {
+	open func removeContentFromComment(withId commentId: String, inPostWithId postId: String, blogId: String, completionHandler: @escaping (_ comment: BloggerComment?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)/removecontent", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.post, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)/removecontent", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(comment: nil, error: error)
-			} else if JSON != nil {
-				let comment = Mapper<BloggerComment>().map(JSON)
-				completionHandler(comment: comment, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let comment = Mapper<BloggerComment>().map(JSON: json)
+				completionHandler(comment, nil)
 			}
 		}
 	}
 
 	/// Delete a comment by ID.
-	public func deleteComment(withId commentId: String, fromPostWithId postId: String, blogId: String, completionHandler: (success: Bool?, error: NSError?) -> ()) {
+	open func deleteComment(withId commentId: String, fromPostWithId postId: String, blogId: String, completionHandler: @escaping (_ success: Bool?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.DELETE, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.delete, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(success: false, error: error)
+				completionHandler(false, error)
 			} else {
-				completionHandler(success: true, error: nil)
+				completionHandler(true, nil)
 			}
 		}
 	}
 
 	/// Gets one comment by ID.
-	public func getComment(forId commentId: String, postId: String, blogId: String, completionHandler: (comment: BloggerComment?, error: NSError?) -> ()) {
+	open func getComment(forId commentId: String, postId: String, blogId: String, completionHandler: @escaping (_ comment: BloggerComment?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let view = view {
 			queryParams.updateValue(view.rawValue, forKey: "view")
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(comment: nil, error: error)
-			} else if JSON != nil {
-				let comment = Mapper<BloggerComment>().map(JSON)
-				completionHandler(comment: comment, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let comment = Mapper<BloggerComment>().map(JSON: json)
+				completionHandler(comment, nil)
 			}
 		}
 	}
 
 	/// Retrieves the comments for a post, possibly filtered.
-	public func listComments(forPostWithId postId: String, blogId: String, completionHandler: (commentList: BloggerCommentList?, error: NSError?) -> ()) {
+	open func listComments(forPostWithId postId: String, blogId: String, completionHandler: @escaping (_ commentList: BloggerCommentList?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(fetchBodies.toJSONString(), forKey: "fetchBodies")
 		if let view = view {
@@ -587,29 +606,29 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(commentList: nil, error: error)
-			} else if JSON != nil {
-				let commentList = Mapper<BloggerCommentList>().map(JSON)
-				completionHandler(commentList: commentList, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let commentList = Mapper<BloggerCommentList>().map(JSON: json)
+				completionHandler(commentList, nil)
 			}
 		}
 	}
 
 	/// Marks a comment as not spam.
-	public func approveComment(withId commentId: String, forPostWithId postId: String, blogId: String, completionHandler: (comment: BloggerComment?, error: NSError?) -> ()) {
+	open func approveComment(withId commentId: String, forPostWithId postId: String, blogId: String, completionHandler: @escaping (_ comment: BloggerComment?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)/approve", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.post, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/posts/\(postId)/comments/\(commentId)/approve", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(comment: nil, error: error)
-			} else if JSON != nil {
-				let comment = Mapper<BloggerComment>().map(JSON)
-				completionHandler(comment: comment, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let comment = Mapper<BloggerComment>().map(JSON: json)
+				completionHandler(comment, nil)
 			}
 		}
 	}
 
 	/// Retrieves the comments for a blog, across all posts, possibly filtered.
-	public func listComments(forBlogWithId blogId: String, completionHandler: (commentList: BloggerCommentList?, error: NSError?) -> ()) {
+	open func listComments(forBlogWithId blogId: String, completionHandler: @escaping (_ commentList: BloggerCommentList?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(fetchBodies.toJSONString(), forKey: "fetchBodies")
 		if let endDate = endDate {
@@ -629,19 +648,19 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/comments", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(commentList: nil, error: error)
-			} else if JSON != nil {
-				let commentList = Mapper<BloggerCommentList>().map(JSON)
-				completionHandler(commentList: commentList, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let commentList = Mapper<BloggerCommentList>().map(JSON: json)
+				completionHandler(commentList, nil)
 			}
 		}
 	}
 
 	/// Maximum number of posts to pull back with the blog.
-	public var maxPosts: UInt!
+	open var maxPosts: UInt!
 
 	/// Gets one blog by ID.
-	public func getBlog(forId blogId: String, completionHandler: (blog: BloggerBlog?, error: NSError?) -> ()) {
+	open func getBlog(forId blogId: String, completionHandler: @escaping (_ blog: BloggerBlog?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let view = view {
 			queryParams.updateValue(view.rawValue, forKey: "view")
@@ -651,21 +670,21 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(blog: nil, error: error)
-			} else if JSON != nil {
-				let blog = Mapper<BloggerBlog>().map(JSON)
-				completionHandler(blog: blog, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let blog = Mapper<BloggerBlog>().map(JSON: json)
+				completionHandler(blog, nil)
 			}
 		}
 	}
 
 	/// User access types for blogs to include in the results, e.g. AUTHOR will return blogs where the user has author level access. If no roles are specified, defaults to ADMIN and AUTHOR roles.
-	public var role: BloggerBlogsRole!
+	open var role: BloggerBlogsRole!
 	/// Whether the response is a list of blogs with per-user information instead of just blogs.
-	public var fetchUserInfo: Bool!
+	open var fetchUserInfo: Bool!
 
 	/// Retrieves a list of blogs, possibly filtered.
-	public func listBlogs(forUserWithId userId: String, completionHandler: (blogList: BloggerBlogList?, error: NSError?) -> ()) {
+	open func listBlogs(forUserWithId userId: String, completionHandler: @escaping (_ blogList: BloggerBlogList?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let view = view {
 			queryParams.updateValue(view.rawValue, forKey: "view")
@@ -679,16 +698,16 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "users/\(userId)/blogs", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(blogList: nil, error: error)
-			} else if JSON != nil {
-				let blogList = Mapper<BloggerBlogList>().map(JSON)
-				completionHandler(blogList: blogList, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let blogList = Mapper<BloggerBlogList>().map(JSON: json)
+				completionHandler(blogList, nil)
 			}
 		}
 	}
 
 	/// Retrieve a Blog by URL.
-	public func getBlog(fromURL url: String, completionHandler: (blog: BloggerBlog?, error: NSError?) -> ()) {
+	open func getBlog(fromURL url: String, completionHandler: @escaping (_ blog: BloggerBlog?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let view = view {
 			queryParams.updateValue(view.rawValue, forKey: "view")
@@ -696,57 +715,62 @@ public class Blogger: GoogleService {
 		queryParams.updateValue(url, forKey: "url")
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/byurl", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(blog: nil, error: error)
-			} else if JSON != nil {
-				let blog = Mapper<BloggerBlog>().map(JSON)
-				completionHandler(blog: blog, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let blog = Mapper<BloggerBlog>().map(JSON: json)
+				completionHandler(blog, nil)
 			}
 		}
 	}
 
 	/// Add a page.
-	public func insertPage(_ page: BloggerPage, toBlogWithId blogId: String, completionHandler: (page: BloggerPage?, error: NSError?) -> ()) {
+	open func insertPage(_ page: BloggerPage, toBlogWithId blogId: String, completionHandler: @escaping (_ page: BloggerPage?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let isDraft = isDraft {
 			queryParams.updateValue(isDraft.toJSONString(), forKey: "isDraft")
 		}
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages", queryParams: queryParams, postBody: Mapper<BloggerPage>().toJSON(page)) { (JSON, error) -> () in
+		fetcher.performRequest(.post,
+		                       serviceName: apiNameInURL,
+		                       apiVersion: apiVersionString,
+		                       endpoint: "blogs/\(blogId)/pages",
+                               queryParams: queryParams,
+                               postBody: Mapper<BloggerPage>().toJSON(page) as [String: AnyObject] ) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(page: nil, error: error)
-			} else if JSON != nil {
-				let page = Mapper<BloggerPage>().map(JSON)
-				completionHandler(page: page, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let page = Mapper<BloggerPage>().map(JSON: json)
+				completionHandler(page, nil)
 			}
 		}
 	}
 
 	/// Publishes a draft page.
-	public func publishPage(withId pageId: String, toBlogWithId blogId: String, completionHandler: (page: BloggerPage?, error: NSError?) -> ()) {
+	open func publishPage(withId pageId: String, toBlogWithId blogId: String, completionHandler: @escaping (_ page: BloggerPage?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)/publish", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.post, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)/publish", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(page: nil, error: error)
-			} else if JSON != nil {
-				let page = Mapper<BloggerPage>().map(JSON)
-				completionHandler(page: page, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let page = Mapper<BloggerPage>().map(JSON: json)
+				completionHandler(page, nil)
 			}
 		}
 	}
 
 	/// Delete a page by ID.
-	public func deletePage(withId pageId: String, fromBlogWithId blogId: String, completionHandler: (success: Bool, error: NSError?) -> ()) {
+	open func deletePage(withId pageId: String, fromBlogWithId blogId: String, completionHandler: @escaping (_ success: Bool, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.DELETE, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.delete, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(success: false, error: error)
+				completionHandler(false, error)
 			} else {
-				completionHandler(success: true, error: nil)
+				completionHandler(true, nil)
 			}
 		}
 	}
 
 	/// Update a page. This method supports patch semantics.
-	public func patchPage(_ page: BloggerPage, forPageWithId pageId: String, blogId: String, completionHandler: (page: BloggerPage?, error: NSError?) -> ()) {
+	open func patchPage(_ page: BloggerPage, forPageWithId pageId: String, blogId: String, completionHandler: @escaping (_ page: BloggerPage?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let publish = publish {
 			queryParams.updateValue(publish.toJSONString(), forKey: "publish")
@@ -754,18 +778,23 @@ public class Blogger: GoogleService {
 		if let revert = revert {
 			queryParams.updateValue(revert.toJSONString(), forKey: "revert")
 		}
-		fetcher.performRequest(.PATCH, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)", queryParams: queryParams, postBody: Mapper<BloggerPage>().toJSON(page)) { (JSON, error) -> () in
+		fetcher.performRequest(.patch,
+		                       serviceName: apiNameInURL,
+		                       apiVersion: apiVersionString,
+		                       endpoint: "blogs/\(blogId)/pages/\(pageId)",
+                               queryParams: queryParams,
+                               postBody: Mapper<BloggerPage>().toJSON(page) as [String: AnyObject] ) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(page: nil, error: error)
-			} else if JSON != nil {
-				let page = Mapper<BloggerPage>().map(JSON)
-				completionHandler(page: page, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let page = Mapper<BloggerPage>().map(JSON: json)
+				completionHandler(page, nil)
 			}
 		}
 	}
 
 	/// Update a page.
-	public func updatePage(_ page: BloggerPage, forPageWithId pageId: String, blogId: String, completionHandler: (page: BloggerPage?, error: NSError?) -> ()) {
+	open func updatePage(_ page: BloggerPage, forPageWithId pageId: String, blogId: String, completionHandler: @escaping (_ page: BloggerPage?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let publish = publish {
 			queryParams.updateValue(publish.toJSONString(), forKey: "publish")
@@ -773,48 +802,53 @@ public class Blogger: GoogleService {
 		if let revert = revert {
 			queryParams.updateValue(revert.toJSONString(), forKey: "revert")
 		}
-		fetcher.performRequest(.PUT, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)", queryParams: queryParams, postBody: Mapper<BloggerPage>().toJSON(page)) { (JSON, error) -> () in
+		fetcher.performRequest(.put,
+		                       serviceName: apiNameInURL,
+		                       apiVersion: apiVersionString,
+		                       endpoint: "blogs/\(blogId)/pages/\(pageId)",
+                               queryParams: queryParams,
+                               postBody: Mapper<BloggerPage>().toJSON(page) as [String: AnyObject] ) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(page: nil, error: error)
-			} else if JSON != nil {
-				let page = Mapper<BloggerPage>().map(JSON)
-				completionHandler(page: page, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let page = Mapper<BloggerPage>().map(JSON: json)
+				completionHandler(page, nil)
 			}
 		}
 	}
 
 	/// Gets one blog page by ID.
-	public func getPages(_ blogId: String, pageId: String, completionHandler: (page: BloggerPage?, error: ErrorProtocol?) -> ()) {
+	open func getPages(_ blogId: String, pageId: String, completionHandler: @escaping (_ page: BloggerPage?, _ error: Error?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let view = view {
 			queryParams.updateValue(view.rawValue, forKey: "view")
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(page: nil, error: error)
-			} else if JSON != nil {
-				let page = Mapper<BloggerPage>().map(JSON)
-				completionHandler(page: page, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let page = Mapper<BloggerPage>().map(JSON: json)
+				completionHandler(page, nil)
 			}
 		}
 	}
 
 	/// Revert a published or scheduled page to draft state.
 
-	public func revertPage(with pageId: String, inBlogWithId blogId: String, completionHandler: (page: BloggerPage?, error: NSError?) -> ()) {
+	open func revertPage(with pageId: String, inBlogWithId blogId: String, completionHandler: @escaping (_ page: BloggerPage?, _ error: NSError?) -> ()) {
 		let queryParams = setUpQueryParams()
-		fetcher.performRequest(.POST, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)/revert", queryParams: queryParams) { (JSON, error) -> () in
+		fetcher.performRequest(.post, serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages/\(pageId)/revert", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(page: nil, error: error)
-			} else if JSON != nil {
-				let page = Mapper<BloggerPage>().map(JSON)
-				completionHandler(page: page, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let page = Mapper<BloggerPage>().map(JSON: json)
+				completionHandler(page, nil)
 			}
 		}
 	}
 
 
-	public func listPages(forBlogWithId blogId: String, completionHandler: (pageList: BloggerPageList?, error: NSError?) -> ()) {
+	open func listPages(forBlogWithId blogId: String, completionHandler: @escaping (_ pageList: BloggerPageList?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		queryParams.updateValue(fetchBodies.toJSONString(), forKey: "fetchBodies")
 		if let pageToken = pageToken {
@@ -831,26 +865,26 @@ public class Blogger: GoogleService {
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "blogs/\(blogId)/pages", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(pageList: nil, error: error)
-			} else if JSON != nil {
-				let pageList = Mapper<BloggerPageList>().map(JSON)
-				completionHandler(pageList: pageList, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let pageList = Mapper<BloggerPageList>().map(JSON: json)
+				completionHandler(pageList, nil)
 			}
 		}
 	}
 
 	/// Gets one blog and user info pair by blogId and userId.
-	public func getBlogUserInfo(forBlogWithId blogId: String, userId: String, completionHandler: (blogUserInfo: BloggerBlogUserInfo?, error: NSError?) -> ()) {
+	open func getBlogUserInfo(forBlogWithId blogId: String, userId: String, completionHandler: @escaping (_ blogUserInfo: BloggerBlogUserInfo?, _ error: NSError?) -> ()) {
 		var queryParams = setUpQueryParams()
 		if let maxPosts = maxPosts {
 			queryParams.updateValue(maxPosts.toJSONString(), forKey: "maxPosts")
 		}
 		fetcher.performRequest(serviceName: apiNameInURL, apiVersion: apiVersionString, endpoint: "users/\(userId)/blogs/\(blogId)", queryParams: queryParams) { (JSON, error) -> () in
 			if error != nil {
-				completionHandler(blogUserInfo: nil, error: error)
-			} else if JSON != nil {
-				let blogUserInfo = Mapper<BloggerBlogUserInfo>().map(JSON)
-				completionHandler(blogUserInfo: blogUserInfo, error: nil)
+				completionHandler(nil, error)
+			} else if let json = JSON {
+                let blogUserInfo = Mapper<BloggerBlogUserInfo>().map(JSON: json)
+				completionHandler(blogUserInfo, nil)
 			}
 		}
 	}

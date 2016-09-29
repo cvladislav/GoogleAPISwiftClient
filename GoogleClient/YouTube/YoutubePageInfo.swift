@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The PageInfo model type for use with the Youtube API
-public class YoutubePageInfo: ObjectType {
+open class YoutubePageInfo: ObjectType {
 	/// The number of results included in the API response.
-	public var resultsPerPage: Int!
+	open var resultsPerPage: Int!
 	/// The total number of results in the result set.
-	public var totalResults: Int!
+	open var totalResults: Int!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubePageInfo: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resultsPerPage <- map["resultsPerPage"]
 		totalResults <- map["totalResults"]
 	}

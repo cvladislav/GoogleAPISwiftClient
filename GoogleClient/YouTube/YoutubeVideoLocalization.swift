@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 /// The VideoLocalization model type for use with the Youtube API
-public class YoutubeVideoLocalization: ObjectType {
+open class YoutubeVideoLocalization: ObjectType {
 	/// Localized version of the video's title.
-	public var title: String!
+	open var title: String!
 	/// Localized version of the video's description.
-	public var description: String!
+	open var description: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -24,7 +24,7 @@ public class YoutubeVideoLocalization: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		title <- map["title"]
 		description <- map["description"]
 	}

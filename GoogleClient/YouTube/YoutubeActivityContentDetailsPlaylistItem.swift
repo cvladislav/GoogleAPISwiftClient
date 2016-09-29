@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The ActivityContentDetailsPlaylistItem model type for use with the Youtube API
-public class YoutubeActivityContentDetailsPlaylistItem: ObjectType {
+open class YoutubeActivityContentDetailsPlaylistItem: ObjectType {
 	/// The resourceId object contains information about the resource that was added to the playlist.
-	public var resourceId: YoutubeResourceId!
+	open var resourceId: YoutubeResourceId!
 	/// The value that YouTube uses to uniquely identify the playlist.
-	public var playlistId: String!
+	open var playlistId: String!
 	/// ID of the item within the playlist.
-	public var playlistItemId: String!
+	open var playlistItemId: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class YoutubeActivityContentDetailsPlaylistItem: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		resourceId <- map["resourceId"]
 		playlistId <- map["playlistId"]
 		playlistItemId <- map["playlistItemId"]

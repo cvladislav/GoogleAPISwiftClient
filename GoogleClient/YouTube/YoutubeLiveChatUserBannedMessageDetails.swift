@@ -10,15 +10,15 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatUserBannedMessageDetails model type for use with the Youtube API
-public class YoutubeLiveChatUserBannedMessageDetails: ObjectType {
+open class YoutubeLiveChatUserBannedMessageDetails: ObjectType {
 	/// The details of the user that was banned.
-	public var bannedUserDetails: YoutubeChannelProfileDetails!
+	open var bannedUserDetails: YoutubeChannelProfileDetails!
 	/// The type of ban.
-	public var banType: YoutubeLiveChatUserBannedMessageDetailsBanType!
+	open var banType: YoutubeLiveChatUserBannedMessageDetailsBanType!
 	/// The duration of the ban. This property is only present if the banType is temporary.
-	public var banDurationSeconds: UInt64!
+	open var banDurationSeconds: UInt64!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -26,7 +26,7 @@ public class YoutubeLiveChatUserBannedMessageDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		bannedUserDetails <- map["bannedUserDetails"]
 		banType <- map["banType"]
 		banDurationSeconds <- map["banDurationSeconds"]

@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The LiveChatTextMessageDetails model type for use with the Youtube API
-public class YoutubeLiveChatTextMessageDetails: ObjectType {
+open class YoutubeLiveChatTextMessageDetails: ObjectType {
 	/// The user's message.
-	public var messageText: String!
+	open var messageText: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,7 +22,7 @@ public class YoutubeLiveChatTextMessageDetails: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		messageText <- map["messageText"]
 	}
 }

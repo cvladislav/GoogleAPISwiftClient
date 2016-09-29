@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 /// The Blog subtype of the Page model type for use with the Blogger API
-public class BloggerPageBlog: ObjectType {
+open class BloggerPageBlog: ObjectType {
 	/// The identifier of the blog containing this page.
-	public var id: String!
+	open var id: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -22,39 +22,39 @@ public class BloggerPageBlog: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		id <- map["id"]
 	}
 }
 
 /// The Page model type for use with the Blogger API
-public class BloggerPage: GoogleObject {
+open class BloggerPage: GoogleObject {
 	/// The author of this Page.
-	public var author: BloggerPageAuthor!
+	open var author: BloggerPageAuthor!
 	/// The title of this entity. This is the name displayed in the Admin user interface.
-	public var title: String!
+	open var title: String!
 	/// Data about the blog containing this Page.
-	public var blog: BloggerPageBlog!
+	open var blog: BloggerPageBlog!
 	/// RFC 3339 date-time when this Page was published.
-	public var published: Date!
+	open var published: Date!
 	/// The identifier for this resource.
-	public var id: String!
+	open var id: String!
 	/// The body content of this Page, in HTML.
-	public var content: String!
+	open var content: String!
 	/// The URL that this Page is displayed at.
-	public var url: String!
+	open var url: String!
 	/// The kind of this entity. Always blogger#page
-	public var kind: String = "blogger#page"
+	open var kind: String = "blogger#page"
 	/// Etag of the resource.
-	public var etag: String!
+	open var etag: String!
 	/// The status of the page for admin resources (either LIVE or DRAFT).
-	public var status: String!
+	open var status: String!
 	/// The API REST URL to fetch this resource from.
-	public var selfLink: String!
+	open var selfLink: String!
 	/// RFC 3339 date-time when this Page was last updated.
-	public var updated: Date!
+	open var updated: Date!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -62,7 +62,7 @@ public class BloggerPage: GoogleObject {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		author <- map["author"]
 		title <- map["title"]
 		blog <- map["blog"]
@@ -79,11 +79,11 @@ public class BloggerPage: GoogleObject {
 }
 
 /// The Image subtype of the PageAuthor model type for use with the Blogger API
-public class BloggerPageAuthorImage: ObjectType {
+open class BloggerPageAuthorImage: ObjectType {
 	/// The page author's avatar URL.
-	public var url: String!
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -91,23 +91,23 @@ public class BloggerPageAuthorImage: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		url <- map["url"]
 	}
 }
 
 /// The Author subtype of the Page model type for use with the Blogger API
-public class BloggerPageAuthor: ObjectType {
+open class BloggerPageAuthor: ObjectType {
 	/// The page author's avatar.
-	public var image: BloggerPageAuthorImage!
+	open var image: BloggerPageAuthorImage!
 	/// The identifier of the Page creator.
-	public var id: String!
+	open var id: String!
 	/// The display name.
-	public var displayName: String!
+	open var displayName: String!
 	/// The URL of the Page creator's Profile page.
-	public var url: String!
+	open var url: String!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -115,7 +115,7 @@ public class BloggerPageAuthor: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		image <- map["image"]
 		id <- map["id"]
 		displayName <- map["displayName"]

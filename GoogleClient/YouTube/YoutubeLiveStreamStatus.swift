@@ -10,12 +10,12 @@ import Foundation
 import ObjectMapper
 
 /// The LiveStreamStatus model type for use with the Youtube API
-public class YoutubeLiveStreamStatus: ObjectType {
+open class YoutubeLiveStreamStatus: ObjectType {
 	/// The health status of the stream.
-	public var healthStatus: YoutubeLiveStreamHealthStatus!
-	public var streamStatus: YoutubeLiveStreamStatusStreamStatus!
+	open var healthStatus: YoutubeLiveStreamHealthStatus!
+	open var streamStatus: YoutubeLiveStreamStatusStreamStatus!
 	
-	public required init?(_ map: Map) {
+	public required init?(map: Map) {
 
 	}
 
@@ -23,7 +23,7 @@ public class YoutubeLiveStreamStatus: ObjectType {
 
 	}
 
-	public func mapping(_ map: Map) {
+	open func mapping(map: Map) {
 		healthStatus <- map["healthStatus"]
 		streamStatus <- map["streamStatus"]
 	}
