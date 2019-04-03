@@ -162,7 +162,7 @@ open class Blogger: GoogleService {
 	var apiNameInURL: String = "blogger"
 	var apiVersionString: String = "v3"
 
-	open let fetcher: GoogleServiceFetcher = GoogleServiceFetcher()
+    public let fetcher: GoogleServiceFetcher = GoogleServiceFetcher()
 
 	public required init() {
 

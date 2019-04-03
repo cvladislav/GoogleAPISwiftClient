@@ -91,7 +91,7 @@ open class Youtube: GoogleService {
 	var apiNameInURL: String = "youtube"
 	var apiVersionString: String = "v3"
 
-	open let fetcher: GoogleServiceFetcher = GoogleServiceFetcher()
+    public let fetcher: GoogleServiceFetcher = GoogleServiceFetcher()
     
     public required init() {
         

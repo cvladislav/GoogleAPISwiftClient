@@ -13,7 +13,7 @@ open class Discovery: GoogleService {
     var apiNameInURL: String = "discovery"
     var apiVersionString: String = "v1"
     
-    open let fetcher : GoogleServiceFetcher = GoogleServiceFetcher()
+    public let fetcher : GoogleServiceFetcher = GoogleServiceFetcher()
     
     public required init() {
         

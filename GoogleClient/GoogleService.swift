@@ -64,7 +64,7 @@ open class GoogleServiceFetcher {
             finalQueryParams.updateValue(apiKey!, forKey: "key")
         }
         let request = multiEncodedURLRequest(method, URLString: url, URLParameters: finalQueryParams, bodyParameters: postBody, headers: headers)
-        Alamofire.request(request)
+        AF.request(request)
             .validate()
             .responseJSON { response in
                 switch response.result {
@@ -103,7 +103,7 @@ open class GoogleServiceFetcher {
         
 
             
-        Alamofire.upload(uploadParameters.data, with: request).uploadProgress { (progress) in
+        AF.upload(uploadParameters.data, with: request).uploadProgress { (progress) in
                 //uploadParameters.progressHandler?(bytesWritten: 0, totalBytesWritten: 0, totalBytesExpectedToWrite: 0)
 
                 // This closure is NOT called on the main queue for performance

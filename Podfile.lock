@@ -1,13 +1,31 @@
 PODS:
-  - Alamofire (4.0.1)
-  - ObjectMapper (2.0.0)
+  - Alamofire (5.0.0-beta.4)
+  - ObjectMapper (3.4.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0.1)
-  - ObjectMapper
+  - Alamofire (from `https://github.com/Alamofire/Alamofire`, branch `master`)
+  - ObjectMapper (from `https://github.com/tristanhimmelman/ObjectMapper`, branch `master`)
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: master
+    :git: https://github.com/Alamofire/Alamofire
+  ObjectMapper:
+    :branch: master
+    :git: https://github.com/tristanhimmelman/ObjectMapper
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 4df5912df4ebb138454aeba78f1470acc52dd4ae
+    :git: https://github.com/Alamofire/Alamofire
+  ObjectMapper:
+    :commit: 4bc1813d462a590cb5c59d58dfe60f9b7f9460dc
+    :git: https://github.com/tristanhimmelman/ObjectMapper
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+  Alamofire: 6458d95477bc40adf10129f22c67cfb014162dc8
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: cdaef701bc82ef206403a4a55cbe1684d5fd51b2
+
+COCOAPODS: 1.5.3
