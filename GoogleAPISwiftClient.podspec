@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://twitter.com/mattwyskiel"
 
   # written in Swift
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "11.0"
   s.osx.deployment_target = "10.9"
   s.watchos.deployment_target = "2.0"
 
